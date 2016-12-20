@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular.module('surveyTimeApp', ["ui.router"])
-.config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
+angular.module('surveyTimeApp', ["ui.router"]).constant("url","https://47.90.20.200:1602/users/").config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
 	
 	$stateProvider.state("home",{
 			url:"/home",
@@ -17,7 +16,11 @@ angular.module('surveyTimeApp', ["ui.router"])
     }).state("home.news",{
 			url:"/news",
       templateUrl:'views/news.html'
-    })
+    }).state("home.lists",{
+        url:"/lists",
+        templateUrl:"views/lists.html",
+      controller:"zllCon" 
+      });
 
-	$urlRouterProvider.when("","/home");
+	$urlRouterProvider.when("","/home/lists");
 }]);

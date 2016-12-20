@@ -5,3 +5,116 @@
 .a{
   text-align: center;
 }
+
+html,body,div,ul,li{
+		  	margin: 0;
+		  	padding: 0;
+		  	
+		  }
+		  body{
+		  
+		  	box-sizing: border-box;
+		  }
+			html{
+				font-size: 3.125vw;
+			}
+			
+.z-shu{
+	width:100%;
+	height: 37rem;
+	background: #f3f3f5;
+	margin-top: 4.3rem;
+}
+.z-zhu{
+
+}
+.z-zhu img{
+	width:11.3rem;
+	height: 13.7rem;
+	margin-left: 8rem;
+	display: block;
+	float: left;
+	margin-top: 8rem;
+}
+.z-zhu span{
+	font-size: 1.85rem;
+
+	margin-left: 9rem;
+	display: block;
+	float: left;
+	margin-top: 1rem;
+	color: #aa9c95;
+	
+}
+.badge{
+	width:1.3rem;
+	height: 1.4rem;
+	border-radius: 10%;
+	color: black;
+	     padding: 3px 2px;
+	text-align: center;
+	background:#9fd6fd;
+}
+
+.list-group >li:nth-child(1){
+	display: block;
+	margin-top:6.4rem;
+}
+.list-group-item {
+ border-bottom: none;
+}
+      
+		.jiathis_style_m{
+			
+			background: #fff;
+			color: red;
+		padding: 2rem;
+
+		}
+		.z-d{
+			width:100%;
+			height: 5rem;
+			background: #fff;
+
+		}
+		.zk-p{
+		width:33.3%;
+		height: 4.6rem;
+		float: left;
+		margin-top: .6rem;
+		}	
+		.zk-p img{
+			width:2.4rem;
+			height: 2.1rem;
+			display: block;
+			margin-left: 2.3rem;
+		}
+		.zk-p span{
+			color: #909b96;
+			margin-top: .2rem;
+			font-size: 1.4rem;
+			display: block;
+			margin-left: 2.3rem;
+		}
+		.y-yin{
+			width:100vw;
+			height: 100vh;
+			z-index: 1;
+			position: absolute;
+			top:0;
+			left:0;
+			background: black;
+			opacity: .2;
+		}
+		.z-kj{
+			width:100%;
+			height: 8rem;
+			background: #fff;
+			z-index: 9999999;
+			position: fixed;
+			bottom: 0rem;
+		-webkit-animation:animation1 2s ease-out  backwards;}
+@-webkit-keyframes animation1{
+    0%{-webkit-transform:translate(0,50px); opacity:0;}
+    100%{-webkit-transform:translate(0,0px); opacity:1;}
+}
