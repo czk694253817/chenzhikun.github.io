@@ -8,8 +8,9 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('czkCon',["$scope","$timeout",function ($scope,$timeout) {
-		$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+.controller("czkCon", ['$scope', '$timeout', function ($scope, $timeout) {
+ 
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   $scope.series = ['Series A', 'Series B'];
   $scope.data = [
     [65, 59, 80, 81, 56, 55, 40],
@@ -23,5 +24,5 @@ angular.module('surveyTimeApp')
       [28, 48, 40, 19, 86, 27, 90],
       [65, 59, 80, 81, 56, 55, 40]
     ];
-  }, 3000);
-}]);
+  }, 3000)
+}])
