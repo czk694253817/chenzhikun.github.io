@@ -8,6 +8,6 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('stsCon', function () {
+	.controller('stsCon',['$scope', function ($scope) {
     
-  });
+  }]);
