@@ -7,8 +7,6 @@
  * # MainCtrl
  * Controller of the surveyTimeApp
  */
-alert();
-var a = "aaaaaaaaaaaa";
 angular.module('surveyTimeApp')
   .controller('stsCon', function () {
     

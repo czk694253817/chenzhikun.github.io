@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular.module('surveyTimeApp', ["ui.router"])
+angular.module('surveyTimeApp', ["ui.router","chart.js"])
 .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
 	$urlRouterProvider.when("","/index");
 	$stateProvider

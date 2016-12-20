@@ -1,4 +1,8 @@
-*{
-  margin:0;
-  padding:0;
-}
+ html,body,div,ul,li,p,span,h1{
+		  	margin: 0;
+		  	padding: 0;
+		  	box-sizing: border-box;
+		  }
+			html{
+				font-size: 3.125vw;
+			}
