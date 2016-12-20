@@ -27,9 +27,9 @@
 
     <!-- Add your site or application content here -->
     <div ng-controller="czkCon">
-        <div id="main2" style="width: 600px;height:400px;"></div>
-        <div id="main" style="width: 600px;height:400px;"></div>
-        
+    1
+        <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -51,18 +51,18 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/chart.js/dist/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/Chart.js"></script>
         <script src="scripts/controllers/czk.js"></script>
         <script src="scripts/controllers/lj.js"></script>
         <script src="scripts/controllers/sts.js"></script>
         <script src="scripts/controllers/zjf.js"></script>
         <script src="scripts/controllers/zll.js"></script>
-
+      
         <!-- endbuild -->
 </body>
 </html>

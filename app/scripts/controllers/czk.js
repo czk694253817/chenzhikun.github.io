@@ -7,22 +7,21 @@
  * # MainCtrl
  * Controller of the surveyTimeApp
  */
-angular.module('surveyTimeApp',[])
-	.controller('czkCon', function () {
-		new Chart(ctx).Bar(data,options);
-		var data = {
-	labels : ["January","February","March","April","May","June","July"],
-	datasets : [
-		{
-			fillColor : "rgba(220,220,220,0.5)",
-			strokeColor : "rgba(220,220,220,1)",
-			data : [65,59,90,81,56,55,40]
-		},
-		{
-			fillColor : "rgba(151,187,205,0.5)",
-			strokeColor : "rgba(151,187,205,1)",
-			data : [28,48,40,19,96,27,100]
-		}
-	]
-}
-  });
+angular.module('surveyTimeApp')
+	.controller('czkCon',["$scope","$timeout",function ($scope,$timeout) {
+		$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $timeout(function () {
+    $scope.data = [
+      [28, 48, 40, 19, 86, 27, 90],
+      [65, 59, 80, 81, 56, 55, 40]
+    ];
+  }, 3000);
+}]);
