@@ -14,7 +14,10 @@ angular.module('surveyTimeApp', ["ui.router"])
 	$stateProvider.state("home",{
 			url:"/home",
       templateUrl:'views/home.html'
-//    controller:"home"
+    }).state("home.news",{
+			url:"/news",
+      templateUrl:'views/news.html'
     })
+
 	$urlRouterProvider.when("","/home");
 }]);

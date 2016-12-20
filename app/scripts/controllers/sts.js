@@ -8,10 +8,6 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-//	.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
-//  $stateProvider
-//  $urlRouterProvider.when('','/home');
-//}])
-  .controller('stsCon',['$scope', function ($scope) {
+	.controller('stsCon',['$scope', function ($scope) {
     
   }]);
