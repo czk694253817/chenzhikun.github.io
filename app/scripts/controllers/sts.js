@@ -7,9 +7,11 @@
  * # MainCtrl
  * Controller of the surveyTimeApp
  */
-alert();
-var a = "aaaaaaaaaaaa";
 angular.module('surveyTimeApp')
-  .controller('stsCon', function () {
+//	.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+//  $stateProvider
+//  $urlRouterProvider.when('','/home');
+//}])
+  .controller('stsCon',['$scope', function ($scope) {
     
-  });
+  }]);
