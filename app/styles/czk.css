@@ -1,4 +1,30 @@
-*{
-  margin:0;
-  padding:0;
+ html,body,div,ul,li,p,span,h1{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html{
+	font-size: 3.125vw;
+}
+.h4{
+	padding-top: 1rem;
+	padding-left: 1rem;
+}
+.zonglan{
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+
+}
+.box{
+	width: 20rem !important;
+	height: auto !important;
+	margin-bottom: 1rem !important;
+	margin: 0 auto;
+}
+.tiankong{
+	width: 100%;
+	height: auto;
+	padding-left: 1rem;
+	margin-bottom: 1rem;
 }
