@@ -1,4 +1,4 @@
- html,body,div,ul,li,p,span,h1{
+ html,body,div,ul,li,span,h1{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -27,4 +27,18 @@ html{
 	height: auto;
 	padding-left: 1rem;
 	margin-bottom: 1rem;
+}
+.tiankong{
+	padding-left: 1rem;
+}
+.tiankong p{
+	display: block;
+	font-size: 1.6rem;
+}
+.nei{
+	padding-left: 1rem;
+	color: blue;
+}
+.nei2{
+	padding-left: 1rem;
 }
