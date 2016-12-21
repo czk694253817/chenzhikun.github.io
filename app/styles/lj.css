@@ -6,9 +6,6 @@ html,body{
 			font-size:3.125vw;
 			margin:0;
 			padding:0;
-			/*-moz-user-select: none;
-			-khtml-user-select: none;
-			user-select: none;*/
 		}
 		.lj-wrap2{
 			width:100%;
@@ -340,4 +337,3 @@ html,body{
            input[type="text"]{
            	outline: none
            }
->>>>>>> origin/master
