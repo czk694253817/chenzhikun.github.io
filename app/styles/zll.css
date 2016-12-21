@@ -127,8 +127,5 @@
 			z-index: 9999999;
 			position: fixed;
 			bottom: 0rem;
-		-webkit-animation:animation1 4s ease-out  backwards;}
-@-webkit-keyframes animation1{
-    0%{-webkit-transform:translate(0,50px); opacity:0;}
-    100%{-webkit-transform:translate(0,0px); opacity:1;}
+		
 }
