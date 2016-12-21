@@ -1,14 +1,13 @@
-*{
-  margin:0;
-  padding:0;
-}
-html,body{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*html,body{
 			font-size:3.125vw;
 			margin:0;
 			padding:0;
-			/*-moz-user-select: none;
-			-khtml-user-select: none;
-			user-select: none;*/
 		}
 		.lj-wrap2{
 			width:100%;
@@ -34,7 +33,7 @@ html,body{
 		.lj-content2{
 			width:100%;
 			height:18rem;
-			margin-top: 2rem;
+			margin-top: 5rem;
 			font-size:1.2rem;
 		}
 		.lj-input2{
@@ -55,8 +54,8 @@ html,body{
 		}
 		.lj-input2>input{
 			width:77%;
-			height:3.6rem;
-			line-height: 3.6rem;
+			height:3.7rem;
+			line-height: 3.7rem;
 			border:none;
 			float:left;
 			font-size:1.2rem;
@@ -97,7 +96,7 @@ html,body{
                 height:5.5rem;  
                 color:#ffffff;  
                 border-bottom:0.1rem solid #ffffff;  
-                /*font-size:20pt;*/  
+                
                 font-family:"微软雅黑";  
                 line-height:5.5rem;  
                 text-align:center;                
@@ -108,12 +107,12 @@ html,body{
                 background-color:#808080;  
             }  
             .lj-txt{  
-                display:block;/*设置为独立块（换行）*/  
+                display:block;  
                 width:70%;  
                 margin:0 auto;  
                 height:3.5rem;  
-                /*font-size:15pt;*/  
-                border-radius:0.5rem;/*设置圆角样式*/  
+                  
+                border-radius:0.5rem;  
                 border:0;  
                 padding-left:0.8rem;  
             }  
@@ -128,7 +127,7 @@ html,body{
                 box-sizing:border-box;  
             }  
             #lj-code{  
-                color:#ffffff;/*字体颜色白色*/  
+                color:#ffffff;  
                 background-color:#485a79;     
                 font-size:1.2rem;  
                 font-family:"华康娃娃体W5";  
@@ -145,17 +144,17 @@ html,body{
                 width:30%;  
                 text-align:right;  
                 margin:0 auto;  
-                
-                height:3.5rem;
-                line-height:3.5rem;
+                padding:0.5rem;
+                height:3rem;
+                line-height:3rem;
                 float:right;  
             }  
-            /*层级选择器*/  
+            
             #lj-search_pass_link a{  
                 color:#000000;  
                 text-decoration:none;                 
             }  
-            /*伪类*/  
+             
             #lj-search_pass_link a:hover{  
                 color:#ff0000;  
                 text-decoration:underline;  
@@ -165,12 +164,12 @@ html,body{
                 margin-left:15%;  
                 height:4rem;  
                 border:0;  
-                /*font-size:14pt;*/  
+                 
                 font-family;"微软雅黑";  
                 background-color:#FC5628;  
                 color:#ffffff;  
-                cursor:pointer;/*设置指针鼠标的样式*/  
-                border-radius:2rem;/*设置圆角样式*/  
+                cursor:pointer;  
+                border-radius:2rem; 
                 border:0;  
             }     
             #lj-copyright{  
@@ -183,16 +182,15 @@ html,body{
             .lj-yanzhengma{
             	width:100%;
             	height:8rem;
-            	margin-top: 2rem;
             }
             .lj-wirte{
             	width:100%;
             	height:4rem;
             }
-            .lj-h1{
+            h1{
             	width:100%;
-            	height:8rem;
-            	line-height:8rem;
+            	height:3rem;
+            	line-height:3rem;
             	text-align: center;
             	color:#485a79;
             }
@@ -200,143 +198,44 @@ html,body{
             	width:40%;
             	height:3.5rem;
             	float: left;
-            }
-            .lj-jizhu>input{
-            	margin-top:1rem;
-            }
-            .lj-wrap3{
-			width:100%;
-			height:55rem;
-			background:#efeff4;
-		}
-		.lj-header3{
-			width:100%;
-			height:6rem;
-			line-height: 6rem;
-			background: #50b4f9;
-			color:#fff;
-		}
-		.lj-header3>span:first-child{
-			display: inline-block;
-			width:5.5rem;
-			height:6rem;
-			padding-left: 1rem;
-			box-sizing:border-box;
-		}
-		.lj-header3>span:last-child{
-			display: inline-block;
-			width:20rem;
-			height:6rem;
-			text-align: center;
-		}
-		.lj-content3{
-			width:100%;
-			height:20rem;
-			background:#fff;
-			margin:5rem 0;
-		}
-		.lj-zhuce3{
-			width:27rem;
-			height:4rem;
-			background:#21a9f5;
-			margin:0 auto;
-			color:#fff;
-			text-align: center;
-			line-height: 4rem;
-		}
-		.lj-content3>ul{
-			width:28.7rem;
-			height:20rem;
-			margin:0 auto;
-			padding-top: 2rem;
-		}
-		ul,li,ol{
-			list-style: none;
-		}
-		.lj-content3>ul>li{
-			width:100%;
-			height:3.6rem;
-			line-height: 3.6rem;
-			border-bottom: 0.1rem solid #ddd;
-		}
-		.lj-content3>ul>li>div{
-			width:10%;
-			height:3.6rem;
-			float: left;
-		}
-		.lj-content3>ul>li>div>span{
-			display:block;
-			float:left;
-			margin-top: 0.5rem		
-		}
-		.lj-content3>ul>li>input{
-			float:left;
-			width:90%;
-			border:none;
-			height:3.5rem;
-			border:none;
-			font-size: 1.2rem
-		}
-		.lj-content3>ul>li:first-child>div>span{
-			width:1.2rem;
-			height:2.2rem;
-			background: url(../images/lj-phone.png) no-repeat center;
-			background-size: 100%	
-		}
-		.lj-content3>ul>li:nth-child(2)>div>span{
-			width:1.6rem;
-			height:1.4rem;
-			background: url(../images/lj-key.png) no-repeat center;
-			background-size: 100%	
-		}
-		.lj-content3>ul>li:nth-child(3)>div>span{
-			width:1.2rem;
-			height:1.7rem;
-			background: url(../images/lj-key1.png) no-repeat center;
-			background-size: 100%	
-		}
-		.lj-wrap1{
-			width:100%;
-			height:55rem;
-		}
-		.lj-main1{
-			width:85%;
-			height:48.5rem;
-			margin:3rem auto;
-		}
-		.lj-main1>span{
-			display: block;
-			width:9.8rem;
-			height:9.5rem;
-			margin:0 auto;
-		}
-		img{
-			width:100%;
-		}
-		.lj-main1>div{
-			width:100%;
-			height:auto;
-			margin-top: 5rem
-		}
-		.lj-main1>div>div{
-			display: block;
-			width:100%;
-			height:4rem;
-			text-align: center;
-			line-height: 4rem;
+            }*/
 			
-			box-shadow:0rem 0.2rem 4rem 0.2rem #d6d8db;
-		}
-		.lj-main1>div>div:last-child{
-			margin-top: 3rem;
-		}
-		.lj-h1{
-            width:100%;
-            height:8rem;
-            line-height:8rem;
-            text-align: center;
-            color:#485a79;
-           }
-           input[type="text"]{
-           	outline: none
-           }
+	</style>
+</head>
+<body>
+	<div class="lj-wrap2">
+		<div class="lj-main2">
+			<span>
+				<img src="../images/lj-logo.png">
+			</span>
+			<h1 class="lj-h1">SurveyTime</h1>
+			<div class="lj-content2">
+				<div class="lj-input2">
+					<span>用户名：</span>
+					<input type="text" placeholder="请输入用户名" ng-model="user"  ng-blur="userBlur()" />
+				</div>
+				<div class="lj-input2">
+					<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+					<input type="text" placeholder="请输入密码" ng-model="password"  ng-blur="pasBlur()"/>
+				</div>
+				<div class="lj-remember2">
+					<div class="lj-jizhu">
+						<input type="checkbox"/>
+						<span>记住密码</span>	
+					</div>
+					<div id="lj-search_pass_link">  
+		                <a href="#">忘记密码？</a>  
+		            </div>
+				</div>
+				  
+	              
+	         
+				<div class="lj-login2" ng-click="login()">登录</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">  
+          
+    </script>
+</body>
+</html>
