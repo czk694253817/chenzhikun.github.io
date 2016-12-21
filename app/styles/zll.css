@@ -1,12 +1,4 @@
-*{
-  margin:0;
-  padding:0;
-}
-.a{
-  text-align: center;
-}
-
-html,body,div,ul,li{
+		html,body,div,ul,li{
 		  	margin: 0;
 		  	padding: 0;
 		  	
@@ -18,10 +10,17 @@ html,body,div,ul,li{
 			html{
 				font-size: 3.125vw;
 			}
-			
+			.top{
+				width:100%;
+				height: 4.3rem;
+				background: red;
+				position: fixed;
+				left:0;
+				top:0;
+			}
 .z-shu{
 	width:100%;
-	height: 37rem;
+	height: 40rem;
 	background: #f3f3f5;
 	margin-top: 4.3rem;
 }
@@ -55,15 +54,28 @@ html,body,div,ul,li{
 	text-align: center;
 	background:#9fd6fd;
 }
-
+.list-group{
+	margin-top:6.4rem;
+}
+.list-group-item:last-child {
+	border:none;
+	 border-bottom:1px solid #ddd;
+}
 .list-group >li:nth-child(1){
 	display: block;
-	margin-top:6.4rem;
+	
 }
 .list-group-item {
  border-bottom: none;
 }
-      
+        .fot{
+				width:100%;
+				height: 4.3rem;
+				background: red;
+				position: fixed;
+				left:0;
+				bottom:0;
+			}
 		.jiathis_style_m{
 			
 			background: #fff;
@@ -75,8 +87,10 @@ html,body,div,ul,li{
 			width:100%;
 			height: 5rem;
 			background: #fff;
+             overflow: hidden;
+             display:none;
+}
 
-		}
 		.zk-p{
 		width:33.3%;
 		height: 4.6rem;
@@ -113,7 +127,7 @@ html,body,div,ul,li{
 			z-index: 9999999;
 			position: fixed;
 			bottom: 0rem;
-		-webkit-animation:animation1 2s ease-out  backwards;}
+		-webkit-animation:animation1 4s ease-out  backwards;}
 @-webkit-keyframes animation1{
     0%{-webkit-transform:translate(0,50px); opacity:0;}
     100%{-webkit-transform:translate(0,0px); opacity:1;}
