@@ -8,28 +8,37 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('zllCon', ["$scope","$http","url",function($scope,$http,url){
+  .controller('zllCon', ["$scope","$http","url","$state",function($scope,$http,url,$state){
   	
   	$scope.ll=false;
+  	$scope.zhu=false;
 		$scope.shu=0;
 		$http({
 			method:'get',
-	        url:url+'server/item/'
+	        url:url+'item/'
 			}).then(function(e){
-				if(e!=''){
+				if(e.data!=''){
 					$scope.we=false;
 					$scope.as=true;
 				}else{
 					$scope.we=true;
 				$scope.as=false;
 				}
-				$scope.data=e;
-				console.log(e)
-			},function(){$scope.we=true;
-				$scope.as=false;})
+				if(e.data.length>=6){
+					$scope.zhu=true;
+				}
+				$scope.data=e.data;
+				/*console.log($scope.data.length/6)*/
+			},function(){$state.go('404')})
 			$scope.fn2=function(){
-			
-					$scope.shu++
+		        if($scope.data.length/6<1){
+		        	$scope.shu=$scope.shu
+		        }else{
+		        	$scope.shu++
+		        }
+				
+		
+					
 		
 			}
 			$scope.kk=function(hh){
