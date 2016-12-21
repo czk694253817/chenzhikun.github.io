@@ -1,0 +1,26 @@
+
+<div class="y-yin" ng-if="ll" ng-click="xis()"></div>
+
+    <div class="z-shu">
+	<div class="z-zhu" ng-if="we">
+	<img src="images/hh.png"/>
+    <span>您还没有问卷</span>
+    </div>
+    <ul class="list-group" ng-if="as">
+ <shuju  ng-repeat="x in data | offset:shu"></shuju>
+  <nav>
+  <ul class="pager">
+    <li ng-click="fn()"><a>Previous</a></li>
+    <li ng-click="fn2()"><a >Next</a></li>
+  </ul>
+</nav>
+</ul>
+
+<div class="z-kj" ng-if="ll"><div class="jiathis_style_m" ></div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_m.js" charset="utf-8"></script>
+</div>
+
+
+</div>
+
+
