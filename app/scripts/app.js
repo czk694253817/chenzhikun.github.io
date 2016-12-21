@@ -8,10 +8,9 @@
  *
  * Main module of the application.
  */
-angular.module('surveyTimeApp', ["ui.router","chart.js"])
-.config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
-   // ChartJsProvider.setOptions({ colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] });
 
+angular.module('surveyTimeApp', ["ui.router","chart.js"]).constant("url","https://47.90.20.200:1602/users/").config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
+	
 
 	$stateProvider.state("home",{
 			url:"/home",
@@ -19,11 +18,17 @@ angular.module('surveyTimeApp', ["ui.router","chart.js"])
     }).state("home.news",{
 			url:"/news",
       templateUrl:'views/news.html'
+
     }).state("home.results",{
 			url:"/results",
       templateUrl:'views/results.html',
       controller:"czkCon"
-    })
+    }).state("home.lists",{
+        url:"/lists",
+        templateUrl:"views/lists.html",
+      controller:"zllCon"
+      });
+
 
 	$urlRouterProvider.when("","/home");
 }]);
