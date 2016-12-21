@@ -10,14 +10,15 @@
  */
 
 angular.module('surveyTimeApp', ["ui.router","chart.js"]).constant("url","https://47.90.20.200:1602/users/").config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
-	
+	$urlRouterProvider.when("","/home");
 	$stateProvider.state("home",{
 			url:"/home",
       templateUrl:'views/home.html',
       controller:"stsCon"
     }).state("home.news",{
 			url:"/news",
-      templateUrl:'views/news.html'
+      templateUrl:'views/news.html',
+      controller:"news"
     }).state("home.results",{
 			url:"/results",
       templateUrl:'views/results.html',
@@ -40,7 +41,8 @@ angular.module('surveyTimeApp', ["ui.router","chart.js"]).constant("url","https:
       controller:"topic"
     }).state("home.xt",{
 			url:"/xt",
-      templateUrl:'views/xt.html'
+      templateUrl:'views/xt.html',
+      controller:"sxt"
     }).state("home.xt.dx",{
 			url:"/dx",
       templateUrl:'views/dx.html'
@@ -48,20 +50,8 @@ angular.module('surveyTimeApp', ["ui.router","chart.js"]).constant("url","https:
         url:"/lists",
         templateUrl:"views/lists.html",
       controller:"zllCon" 
-      }).state("login",{
-      url:"/login",
-      templateUrl:'views/login.html',
-      controller:"loginCon"
-    }).state("zhuce",{
-      url:"/zhuce",
-      templateUrl:'views/zhuce.html',
-      controller:"zhuceCon"
-    }).state("zhuyemian",{
-      url:"/zhuyemian",
-      templateUrl:'views/zhuyemian.html',
-      controller:"zhuyemianCon"
-    })
+      })
 
-	$urlRouterProvider.when("","/zhuyemian");
+	
 }]);
 

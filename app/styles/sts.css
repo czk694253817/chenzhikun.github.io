@@ -79,6 +79,13 @@
 				display: block;
 				font-size: 0.9rem;
 			}
+			
+			/**/
+.s-n{
+	width: 100vw;
+	height: 81vh;
+	background: #fbfbfb;
+}
 .s-top{
 	width: 100vw;
 	height: 4.3rem;
@@ -104,7 +111,7 @@
 	margin-left:23% ;
 }
 .s-cont{
-	width: 80%;	
+	width: 80%;
 	margin: 1rem auto;
 	font-size: 1.4rem;
 }
@@ -113,6 +120,14 @@
   height:4.3rem ;
   line-height: 4.3rem;
   font-weight: bold;
+}
+.s-cont>span{
+	width: 100%;
+  height:3rem ;
+  line-height: 3rem;
+  font-weight: bold;
+  color: red;
+  font-size: 1.2rem;
 }
 .s-cont>.na{
 	display: block;
@@ -140,6 +155,9 @@
 	background: #e87814;
 	outline: none;
 }
+
+
+/**/
 .s-bianji{
 	width: 100%;
 	height: 4.3rem;
@@ -159,8 +177,9 @@
 	width: 100%;
 	height: 4rem;
 	line-height: 4rem;
+	font-size: 1.4rem;
 	border-bottom: 1px solid #ccc;
-	padding-left: 1rem;
+	padding-left: 2rem;
 }
 .s-bt>.ti{
 	width: 100%;
@@ -278,6 +297,9 @@
 }
 .s-dx>span>i{
 	color: #2f8ec1;
+	padding-right: 0.3rem;
+	font-size: 1.4rem;
+	line-height: 3rem;
 }
 
 
