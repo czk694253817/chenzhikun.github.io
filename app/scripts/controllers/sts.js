@@ -32,7 +32,7 @@ angular.module('surveyTimeApp')
   }])
 	.controller('sxt',['$scope',function ($scope) {
     	$scope.szd=function(){
-    		
+    		alert(1)
     	}
   }]).directive('tian',function(){//自定义指令
     return {

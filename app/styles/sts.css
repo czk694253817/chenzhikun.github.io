@@ -9,9 +9,8 @@
 			.s-boss{
 				width: 100vw;
 				min-height: 100vh;
-				margin-top: 4.5rem;
+				padding-top: 4.5rem;
 				background: #f3f3f3;
-				margin-bottom: 5.2rem;
 			}
 			.s-header{
 				width: 100vw;
@@ -173,7 +172,7 @@
 	height: auto;
 	background: #fff;
 }
-.s-bt>.top{
+.s-bt>.s-top{
 	width: 100%;
 	height: 4rem;
 	line-height: 4rem;
@@ -204,18 +203,18 @@
 	height: auto;
 	margin: 0 auto;
 }
-.s-t>.top{
+.s-t>.s-top{
 	width: 100%;
 	height: auto;
 }
-.s-t>.top>p{
+.s-t>.s-top>p{
 	width: 100%;
 	height: 3.5rem;
 	line-height: 3.5rem;
 	font-size:1.5rem ;
 	font-weight: bold;
 }
-.s-t>.top>input{
+.s-t>.s-top>input{
 	width: 100%;
 	height: 3.5rem;
 	line-height: 3.5rem;
