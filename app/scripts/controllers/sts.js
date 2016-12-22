@@ -13,8 +13,13 @@ angular.module('surveyTimeApp')
 		$scope.ret=function(){
 			$window.history.back();
 		}
+		
   }])
 	.controller('news',['$scope',"$rootScope","$state",function ($scope,$rootScope,$state) {
+		$scope.arr=[{"a":"选项名称"},{"a":"选项名称"}];
+		$rootScope.arr=$scope.arr;
+		$scope.sar=["单选题","多选题","填空题","简答题"];
+
 		$scope.bool=false
 		$scope.aa = function(){
 			if($scope.title==''||$scope.title==undefined){
@@ -30,19 +35,30 @@ angular.module('surveyTimeApp')
 	.controller('topic',['$scope',"$rootScope",function ($scope,$rootScope) {
     	
   }])
-	.controller('sxt',['$scope',function ($scope) {
+	.controller('dx',['$scope','$rootScope',function ($scope,$rootScope) {
+    	$scope.arr=[{"a":"选项名称"},{"a":"选项名称"}];
+    	$rootScope.arr=$scope.arr;
+  }])
+	.controller('sxt',['$scope','$rootScope','$state',function ($scope,$rootScope,$state) {
+		$scope.sar=["单选题","多选题","填空题","简答题"];
+
     	$scope.szd=function(){
+    		$rootScope.arr.push({"a":"选项名称"})
+    	}
+
+    	$scope.xxk=function(index){
+    		angular.element(".sts_type").eq(index).addClass("sts_active").siblings().removeClass("sts_active");
+    		if(index==0||index==1){
+    			$state.go("home.xt.dx")
+    		}else if(index==2){
+    			$state.go("home.xt.dx")
+    		}else if(index==3){
+    			$state.go("home.xt.dx")
+    		}	
     		
     	}
-  }]).directive('tian',function(){//自定义指令
-    return {
-        restrict: 'EACM',//仅限元素名调用
-        template: '<div><input type="text"></div>',
-  			link:function(scope,ele,attr){
-							 	
-	    			}
-          }
-  })
+
+  }])
 
 	
 	
