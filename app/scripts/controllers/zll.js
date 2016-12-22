@@ -52,12 +52,12 @@ angular.module('surveyTimeApp')
 			}
 			$scope.kk=function(hh){
 			$scope.ll=true;
-			angular.element(".z-kj").toggle(200)
+			angular.element(".z-kj").slideToggle(500)
 	
 			}
 				$scope.xis=function(hh){
 			$scope.ll=false;
-			angular.element(".z-kj").toggle(200)
+			angular.element(".z-kj").slideToggle(500)
 			}
 			$scope.fn=function(){
 				if($scope.shu>0){
