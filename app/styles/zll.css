@@ -10,19 +10,13 @@
 			html{
 				font-size: 3.125vw;
 			}
-			.top{
-				width:100%;
-				height: 4.3rem;
-				background: red;
-				position: fixed;
-				left:0;
-				top:0;
-			}
+			
 .z-shu{
 	width:100%;
 	height: 40rem;
 	background: #f3f3f5;
-	margin-top: 4.3rem;
+
+	z-index: 1;
 }
 .z-zhu{
 
@@ -45,21 +39,26 @@
 	color: #aa9c95;
 	
 }
+.z-ju{
+	width:85%;
+}
 .badge{
 	width:1.3rem;
 	height: 1.4rem;
 	border-radius: 10%;
 	color: black;
-	     padding: 3px 2px;
+	margin-top: -1.4rem;
+	padding: 3px 2px;
 	text-align: center;
 	background:#9fd6fd;
 }
-.list-group{
-	margin-top:6.4rem;
-}
+
 .list-group-item:last-child {
 	border:none;
 	 border-bottom:1px solid #ddd;
+}
+.list-group {
+	margin-top: 1.4rem;
 }
 .list-group >li:nth-child(1){
 	display: block;
@@ -68,14 +67,7 @@
 .list-group-item {
  border-bottom: none;
 }
-        .fot{
-				width:100%;
-				height: 4.3rem;
-				background: red;
-				position: fixed;
-				left:0;
-				bottom:0;
-			}
+      
 		.jiathis_style_m{
 			
 			background: #fff;
@@ -87,7 +79,7 @@
 			width:100%;
 			height: 5rem;
 			background: #fff;
-             overflow: hidden;
+            
              display:none;
 }
 
