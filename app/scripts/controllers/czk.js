@@ -8,13 +8,13 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-.controller("czkCon", ['$scope', '$timeout', function ($scope, $timeout) { 
-  $scope.labels = ["A","B","C","D"];
-  $scope.labels2 = ["A","B","C","D"];
-  // $scope.series = [];
-  // $scope.series2 = [];
-  $scope.data = [65, 59, 80, 81];
-  $scope.data2 = [1, 2, 3, 4];
+.controller("czkCon", ['$scope', '$timeout','$rootScope', function ($scope,$rootScope, $timeout) { 
+  $scope.labels = ["A","B","C","D"]//$scope.duoxuanxiang;
+  $scope.labels2 = ["A","B","C","D"]//$scope.danxuanxiang;
+  $scope.series=[];
+  $scope.series2=[];
+  $scope.data = ["1","2","3","4"]//$scope.duoxuan;
+  $scope.data2 =["1","2","3","4"]//$scope.danxuan ;
   // $timeout(function () {
   //   $scope.data = [28, 48, 40, 19];
   //   $scope.data2 = [4, 3, 2, 1];
@@ -77,29 +77,29 @@ angular.module('surveyTimeApp')
 }]).directive("test",[function(){
     return {
       restrict:"ECMA",
-      template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：{{x.oop[0]}}</p><p><span class="nei" ng-click="quanbu(x)">显示全部</span></p></div></div>',
+      template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：<canvas class="chart chart-bar" chart-data="data" chart-labels="labels"  chart-series="series" chart-click="onClick"></canvas></p><p><span class="nei" ng-click="quanbu(x)">显示全部</span></p></div></div>',
       scope:{data:"=data"},
       replace:true,
-      link:function(s,e,a){
-      	s.quanbu=function(x){
-      		console.log(arr)
+      controller:function($scope,$rootscope){
+      	$scope.quanbu = function(x){
+      		// $rootscope.sj=$scope.x;
+      		// console.log($rootscope.sj);
       	}
       }
-
+      // link:function(s,e,a){
+      // 	s.quanbu=function(x){
+      // 		$rootscope.sj=s.x
+      // 		console.log($rootscope.sj)	
+      // 	}
+      // }
     }
   }]).filter("g",[function(){
-  	var arr=[];
-  	var xuanxiang=[];
-  	var num=[];
     return function(e){
-      if(e.type==0||e.type==1){
-      		for(var i=0;i<e.opt.length;i++){
-      			xuanxiang.push(e.opt.op)
-      			num.push(e.opt.num)
-      		}
-      }else{
-      	arr.push(e.opp)
-        return arr;
+      if(e.type==0){
+      		
+      	return a;
+      }else if(e.type==1){
+
       }
         
     }
