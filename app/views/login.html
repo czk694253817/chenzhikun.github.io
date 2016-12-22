@@ -210,27 +210,29 @@
 			</span>
 			<h1 class="lj-h1">SurveyTime</h1>
 			<div class="lj-content2">
-				<div class="lj-input2">
-					<span>用户名：</span>
-					<input type="text" placeholder="请输入用户名" ng-model="user"  ng-blur="userBlur()" />
-				</div>
-				<div class="lj-input2">
-					<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-					<input type="text" placeholder="请输入密码" ng-model="password"  ng-blur="pasBlur()"/>
-				</div>
-				<div class="lj-remember2">
-					<div class="lj-jizhu">
-						<input type="checkbox"/>
-						<span>记住密码</span>	
+				<form novalidate name="oForm">
+					<div class="lj-input2">
+						<span>用户名：</span>
+						<input type="text" placeholder="请输入用户名" ng-model="user"  ng-blur="userBlur()" ng-focus="userFocus()" class="{{className}}"/>
 					</div>
-					<div id="lj-search_pass_link">  
-		                <a href="#">忘记密码？</a>  
-		            </div>
-				</div>
-				  
-	              
-	         
-				<div class="lj-login2" ng-click="login()">登录</div>
+					<div class="lj-input2">
+						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+						<input type="text" placeholder="请输入密码" ng-model="password"  ng-blur="pasBlur()" ng-focus="pasFocus()" ng-minlength="6" ng-maxlength="18" class="{{className1}}" required/>
+					</div>
+					<div class="lj-remember2">
+						<div class="lj-jizhu">
+							<input type="checkbox"/>
+							<span>记住密码</span>	
+						</div>
+						<div id="lj-search_pass_link">  
+			                <a href="#">忘记密码？</a>  
+			            </div>
+					</div>
+					  
+		              
+		         
+					<input  ng-click="login()" ng-disabled="oForm.$invalid" value="登录" class="btn btn-info lj-a" type="submit"/>
+				</form>
 			</div>
 		</div>
 	</div>
