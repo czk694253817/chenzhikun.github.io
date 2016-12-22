@@ -8,28 +8,85 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('loginCon', ["$scope","$http",function ($scope,$http) {
-  	// if($scope.user.match(/^[1][34578](\d{9})$/)==null){
-
-  	// }	
-  	// $scope.login=function(){
-
-  	// }
+  .controller('loginCon', ["$scope","$http","url",function ($scope,$http,url) {
+  	$scope.user="";
+    $scope.password="";
   	
-  	$scope.userBlur=function(){
-
-  		if($scope.user.match(/^[1][34578](\d{9})$/==null)){
-  			// $scope.user="手机格式错误";
-  			alert()
-  		}
+  	$scope.userBlur=function(){  
+  		if(!$scope.user.match(/^[1][34578](\d{9})$/)){
+        $scope.user="手机格式错误";
+        $scope.className="lj-red"
+      } 		
   	}
+    $scope.userFocus=function(){      
+      if($scope.className!="lj-black"){
+        $scope.user="";
+        $scope.className="lj-black"
+      }
+    }
+    $scope.login=function(){
+      $http({
+          method:"post",
+          url:url+"server/users/login/",
+          data:{"username":$scope.user,"password":$scope.password},
+          headers:{'Content-Type':'application/x-www-form-urlencoded'}
+        }).then(function(reponse){
+            console.log(reponse)
+        },function(reponse){
+            console.log(reponse)
+        })
+    }
+        
+      
 
-  	$scope.pasBlur=function(){
-  		
-  	}
+  	
   }])
-  .controller('zhuceCon', ["$scope","$http",function ($scope,$http) {
-  	
+
+  .controller('zhuceCon',  ["$scope","$http","url",function ($scope,$http,url) {
+    $scope.user="";
+    $scope.password="";
+    $scope.password1="";
+    $scope.userBlur=function(){  
+      if(!$scope.user.match(/^[1][34578](\d{9})$/)){
+        $scope.user="手机格式错误";
+        $scope.className="lj-red"
+      }     
+    }
+    $scope.userFocus=function(){      
+      if($scope.className!="lj-black"){
+        $scope.user="";
+        $scope.className="lj-black"
+      }
+    }
+  	$scope.pasBlur=function(){  
+      if($scope.password.length>6 && $scope.password.length<18){
+        
+      }else{
+        $scope.password="密码格式错误";
+        $scope.className1="lj-red";
+        
+      }     
+    }
+    $scope.pasFocus=function(){      
+      if($scope.className1!="lj-black"){
+        $scope.password="";
+        $scope.className1="lj-black"
+      }
+    }
+    $scope.zhuce=function(){
+      $http({
+          method:"post",
+          url:url+"server/users/",
+          data:{"username":$scope.user,"password":$scope.password}
+          // headers:{'Content-Type':'application/x-www-form-urlencoded'}
+        }).then(function(reponse){
+            console.log(reponse);
+        },function(){
+            alert("error");
+        })
+    }
+
+
   }])
   .controller('zhuyemianCon', ["$scope","$http",function ($scope,$http) {
   	
