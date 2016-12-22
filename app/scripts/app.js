@@ -38,15 +38,16 @@ $urlRouterProvider.when("","/home")
       controller:"sxt"
     }).state("home.xt.dx",{
 			url:"/dx",
-      templateUrl:'views/dx.html'
+      templateUrl:'views/dx.html',
+      controller:"dx"
     }).state("home.lists",{
         url:"/lists",
         templateUrl:"views/lists.html",
       controller:"zllCon" 
-      }).state("404",{
+    }).state("404",{
         url:"/404",
         templateUrl:"404.html"
-      })
+    })
 
 
 }]);
