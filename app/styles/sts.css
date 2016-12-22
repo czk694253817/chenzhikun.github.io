@@ -8,7 +8,7 @@
 			}
 			.s-boss{
 				width: 100vw;
-				height: auto;
+				min-height: 100vh;
 				margin-top: 4.5rem;
 				background: #f3f3f3;
 				margin-bottom: 5.2rem;
@@ -28,6 +28,10 @@
 				font-size: 2rem;
 				line-height: 4.5rem;
 				text-align: center;
+			}
+			.s-header>.left>div{
+				font-size: 2rem;
+				
 			}
 			.s-header>.conter{
 				flex: 6;
@@ -75,6 +79,13 @@
 				display: block;
 				font-size: 0.9rem;
 			}
+			
+			/**/
+.s-n{
+	width: 100vw;
+	height: 81vh;
+	background: #fbfbfb;
+}
 .s-top{
 	width: 100vw;
 	height: 4.3rem;
@@ -100,7 +111,7 @@
 	margin-left:23% ;
 }
 .s-cont{
-	width: 80%;	
+	width: 80%;
 	margin: 1rem auto;
 	font-size: 1.4rem;
 }
@@ -109,6 +120,14 @@
   height:4.3rem ;
   line-height: 4.3rem;
   font-weight: bold;
+}
+.s-cont>span{
+	width: 100%;
+  height:3rem ;
+  line-height: 3rem;
+  font-weight: bold;
+  color: red;
+  font-size: 1.2rem;
 }
 .s-cont>.na{
 	display: block;
@@ -136,6 +155,9 @@
 	background: #e87814;
 	outline: none;
 }
+
+
+/**/
 .s-bianji{
 	width: 100%;
 	height: 4.3rem;
@@ -155,8 +177,9 @@
 	width: 100%;
 	height: 4rem;
 	line-height: 4rem;
+	font-size: 1.4rem;
 	border-bottom: 1px solid #ccc;
-	padding-left: 1rem;
+	padding-left: 2rem;
 }
 .s-bt>.ti{
 	width: 100%;
@@ -178,7 +201,7 @@
 /*添加新题*/
 .s-t{
 	width: 90%;
-	height: 100vh;
+	height: auto;
 	margin: 0 auto;
 }
 .s-t>.top{
@@ -211,6 +234,7 @@
 }
 .s-t>.box>div{
 	flex: 1;
+	font-size: 1.1rem;
 	text-align: center;
 	color: #2e8ec1;
 }
@@ -219,8 +243,6 @@
 	color: #fff;
 }
 .active{
-	width:100px;
-	height:100px;
 	background:#2e8ec1 !important;
 	color:#fff !important;
 }
@@ -275,6 +297,9 @@
 }
 .s-dx>span>i{
 	color: #2f8ec1;
+	padding-right: 0.3rem;
+	font-size: 1.4rem;
+	line-height: 3rem;
 }
 
 
