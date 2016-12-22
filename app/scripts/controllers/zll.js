@@ -8,7 +8,7 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('zllCon', ["$scope","$http","url","$state",function($scope,$http,url,$state){
+  .controller('zllCon', ["$scope","$rootScope","$http","url","$state",function($scope,$rootScope,$http,url,$state){
   	
   	$scope.ll=false;
   	$scope.zhu=false;
@@ -22,22 +22,13 @@ angular.module('surveyTimeApp')
 					$scope.as=true;
 				}else{
 					$scope.we=true;
-				$scope.as=false;
+					$scope.as=false;
 				}
 				if(e.data.length>=6){
 					$scope.zhu=true;
 				}
-				$scope.data=e.data;
-				//删除
-				$scope.sc=function(hj){
-				console.log(hj)
-				e.data.splice(hj,1)
-			/*	delete $scope.data[hj] */
-				$scope.data=e.data;
-				console.log(e)
-			return e;
-			}
-				/*console.log($scope.data.length/6)*/
+				$rootScope.data=e.data;
+	
 			},function(){/*$state.go('404')*/})
 			$scope.fn2=function(){
 		    if($scope.data.length/6<=$scope.shu+1){
@@ -45,19 +36,29 @@ angular.module('surveyTimeApp')
 		        }else{
 		        	$scope.shu++
 		        }
-				
-		
-					
+			}
+				//删除
+				$scope.sc=function(e,hj){
+					 $http({
+       url:url+'item/'+'<e.id>',
+       method:"delete"
+     }).then(function(cd){
+     	console.log(cd)
+       console.log(hj)
+       $scope.data.splice(hj,1)
+     },function(){})
+				console.log(e.id)
+	
 		
 			}
 			$scope.kk=function(hh){
 			$scope.ll=true;
-			angular.element(".z-kj").toggle(200)
+			angular.element(".z-kj").slideToggle(500)
 	
 			}
 				$scope.xis=function(hh){
 			$scope.ll=false;
-			angular.element(".z-kj").toggle(200)
+			angular.element(".z-kj").slideToggle(500)
 			}
 			$scope.fn=function(){
 				if($scope.shu>0){
@@ -71,11 +72,11 @@ angular.module('surveyTimeApp')
 	}]).directive('shuju',function(){//自定义指令
     return {
         restrict: 'EACM',//仅限元素名调用
-        template: '<div><li class="list-group-item"  ng-click="fn()"><span class="badge">0</span>{{x.title}}</li><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc($index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+        template: '<div><li class="list-group-item"  ><div class="z-ju">{{x.title}}</div><span class="badge" ng-click="xw()">0</span></li><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
      
   link:function(scope,ele,attr){
 //	  scope.po=false;
-	  scope.fn=function(){
+	  scope.xw=function(){
       ele.find(".z-d").toggle(200);	
 			}
 	    			}

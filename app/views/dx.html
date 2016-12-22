@@ -1,8 +1,7 @@
 <div>
 	<div class="s-dx">
 		<p>选项</p>
-		<input type="text" placeholder="选项名称"/>
-		<input type="text" placeholder="选项名称"/>
-		<span><i class="glyphicon glyphicon-plus-sign"></i>添加选项</span>
+		<input ng-repeat="x in arr" type="text" placeholder="{{x.a}}"/>
+		<span ng-click="szd()"><i class="glyphicon glyphicon-plus-sign"></i>添加选项</span>
 	</div>
 </div>
