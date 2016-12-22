@@ -7,11 +7,14 @@
  * # MainCtrl
  * Controller of the surveyTimeApp
  */
+
 angular.module('surveyTimeApp')
-  .controller('loginCon', ["$scope","$http","url",function ($scope,$http,url) {
+  .controller('loginCon', ["$scope","$http","url","$rootScope",function ($scope,$http,url,$rootScope) {
   	$scope.user="";
     $scope.password="";
-  	
+
+  	$scope.user=$rootScope.user
+    $scope.password=$rootScope.password
   	$scope.userBlur=function(){  
   		if(!$scope.user.match(/^[1][34578](\d{9})$/)){
         $scope.user="手机格式错误";
@@ -27,9 +30,8 @@ angular.module('surveyTimeApp')
     $scope.login=function(){
       $http({
           method:"post",
-          url:url+"server/users/login/",
-          data:{"username":$scope.user,"password":$scope.password},
-          headers:{'Content-Type':'application/x-www-form-urlencoded'}
+          url:url+"users/login",
+          data:{"username":$scope.user,"password":$scope.password}
         }).then(function(reponse){
             console.log(reponse)
         },function(reponse){
@@ -42,30 +44,37 @@ angular.module('surveyTimeApp')
   	
   }])
 
-  .controller('zhuceCon',  ["$scope","$http","url",function ($scope,$http,url) {
+  .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope",function ($scope,$http,url,$timeout,$location,$state,$rootScope) {
     $scope.user="";
     $scope.password="";
     $scope.password1="";
-    $scope.userBlur=function(){  
-      if(!$scope.user.match(/^[1][34578](\d{9})$/)){
-        $scope.user="手机格式错误";
-        $scope.className="lj-red"
+
+    $scope.userBlur=function(){
+      if($scope.user){
+        if(!$scope.user.match(/^[1][34578](\d{9})$/)){
+          $scope.user="手机格式错误";
+          $scope.className="lj-red"
+        }
       }     
-    }
-    $scope.userFocus=function(){      
+    }  
+    $scope.userFocus=function(){
+
       if($scope.className!="lj-black"){
         $scope.user="";
         $scope.className="lj-black"
       }
     }
-  	$scope.pasBlur=function(){  
-      if($scope.password.length>6 && $scope.password.length<18){
-        
-      }else{
-        $scope.password="密码格式错误";
-        $scope.className1="lj-red";
-        
-      }     
+  	$scope.pasBlur=function(){
+      if($scope.password){
+        if($scope.password.length>6 && $scope.password.length<18){
+          
+        }else{
+          $scope.password="密码格式错误";
+          $scope.className1="lj-red";
+          
+        }
+      }
+             
     }
     $scope.pasFocus=function(){      
       if($scope.className1!="lj-black"){
@@ -73,17 +82,66 @@ angular.module('surveyTimeApp')
         $scope.className1="lj-black"
       }
     }
+
+    $scope.pas1Blur=function(){
+      if($scope.password1){
+        if($scope.password1==$scope.password){
+          
+        }else{
+          $scope.password1="密码不一致";
+          $scope.className2="lj-red";
+          
+        }
+      }
+             
+    }
+    $scope.pas1Focus=function(){      
+      if($scope.className2!="lj-black"){
+        $scope.password1="";
+        $scope.className2="lj-black"
+      }
+    }
+
     $scope.zhuce=function(){
-      $http({
-          method:"post",
-          url:url+"server/users/",
-          data:{"username":$scope.user,"password":$scope.password}
-          // headers:{'Content-Type':'application/x-www-form-urlencoded'}
-        }).then(function(reponse){
-            console.log(reponse);
-        },function(){
-            alert("error");
-        })
+      if(!$scope.user){
+        $scope.user="手机号不能为空"
+        $scope.className="lj-red";
+      }
+      if(!$scope.password){
+        $scope.password="密码不能为空"
+        $scope.className1="lj-red";
+      }else{
+        if(!$scope.password1){
+          $scope.password1="请再次输入密码"
+          $scope.className2="lj-red";
+        }
+      }
+
+        
+      angular.element(".lj-hide").css("bottom","0");
+      if($scope.user.match(/^[1][34578](\d{9})$/) && $scope.password.length>6 && $scope.password.length<18 && $scope.password==$scope.password1){
+        
+        $http({
+            method:"post",
+            url:url+"users",
+            data:{"username":$scope.user,"password":$scope.password}
+            // headers:{'Content-Type':'application/x-www-form-urlencoded'}
+          }).then(function(reponse){
+              
+              // $state.go("login")
+              $location.path("/login")
+              $rootScope.user=$scope.user
+              $rootScope.password=$scope.password
+          },function(reponse){
+            
+              var ele = angular.element(".lj-hide");
+              ele.animate({"bottom":"14rem","opacity":1},400,function(){
+                ele.delay(1000).animate({"opacity":0});
+              });
+  
+              
+          })
+      }
     }
 
 

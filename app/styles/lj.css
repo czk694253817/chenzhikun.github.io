@@ -231,6 +231,7 @@ html,body{
 			height:20rem;
 			background:#fff;
 			margin:5rem 0;
+			
 		}
 		.lj-zhuce3{
 			width:27rem;
@@ -350,4 +351,20 @@ html,body{
            }
            .lj-black{
            	color: #000;
+           }
+           .lj-hide{
+           	width:90%;
+           	height:4rem;
+           	color:#fff;
+           	background:#000;
+           	text-align: center;
+           	line-height:4rem;
+           	border-radius:0.5rem;
+           	position:fixed;
+           	bottom:0;
+           	left:5%;
+           	opacity:0;
+           }
+           .lj-show{
+
            }
