@@ -21,7 +21,7 @@ $urlRouterProvider.when("","/home")
       templateUrl:'views/news.html',
       controller:"news"
     }).state("home.results",{
-	  url:"/results",
+	  url:"/results:producerId",
       templateUrl:'views/results.html',
       controller:"czkCon"
     }).state("home.topic",{
