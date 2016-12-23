@@ -8,8 +8,10 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('zllCon', ["$scope","$rootScope","$http","url","$state",function($scope,$rootScope,$http,url,$state){
-  	
+  .controller('zllCon', ["$scope","$http","url","$state","$stateParams",function($scope,$http,url,$state,$stateParams){
+  	// $rootScope.aa=$stateParams.id;
+  	// $rootScope.uid = $stateParams.id;
+  	console.log($stateParams.id);
   	$scope.ll=false;
   	$scope.zhu=false;
 		$scope.shu=0;
@@ -27,7 +29,7 @@ angular.module('surveyTimeApp')
 				if(e.data.length>=6){
 					$scope.zhu=true;
 				}
-				$rootScope.data=e.data;
+				$scope.data=e.data;
 	
 			},function(){/*$state.go('404')*/})
 			$scope.fn2=function(){
@@ -69,10 +71,13 @@ angular.module('surveyTimeApp')
 				
 				
 			}
+			$scope.xq=function(n){
+			 $state.go('home.results', {producerId: '='+n});
+			}
 	}]).directive('shuju',function(){//自定义指令
     return {
         restrict: 'EACM',//仅限元素名调用
-        template: '<div><li class="list-group-item"  ><div class="z-ju">{{x.title}}</div><span class="badge" ng-click="xw()">0</span></li><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+        template: '<div><li class="list-group-item"  ><div class="z-ju" ng-click="xq(x.id)">{{x.title}}</div><span class="badge" ng-click="xw()">0</span></li><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
      
   link:function(scope,ele,attr){
 //	  scope.po=false;
@@ -85,7 +90,7 @@ angular.module('surveyTimeApp')
   }).filter('offset', function() { 
       return function(arr,ss) {
 
-    return arr.slice(6*ss,6*(ss+1))
+    return arr.slice(6*ss,6*(ss+1));
 
       
       };

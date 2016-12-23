@@ -8,12 +8,15 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('stsCon',['$scope',"$rootScope","$window",function ($scope,$rootScope,$window) {
+	.controller('stsCon',['$scope',"$window","$rootScope","$stateParams",function ($scope,$rootScope,$window,$stateParams) {
 		$scope.$window=$window;
 		$scope.ret=function(){
 			$window.history.back();
 		}
 		$scope.s_type=0;
+		// $rootScope.aa=$stateParams.id;
+		console.log($stateParams.id)
+		
   }])
 	.controller('news',['$scope',"$rootScope","$state",function ($scope,$rootScope,$state) {
 		$scope.arr=[{"a":"选项名称"},{"a":"选项名称"}];
