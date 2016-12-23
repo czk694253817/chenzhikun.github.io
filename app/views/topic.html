@@ -4,13 +4,14 @@
 	</div>
 	<div class="s-bt">
 		<div class="s-top">
-			{{title}}
+			问卷名称：{{title}}
 		</div>
-		
+		<div ui-view="ststotk"></div>
 		<div class="ti">
 			<button ui-sref="home.xt.dx">添加新题</button>
-			<!--<button ng-click="bb()">按钮</button>-->
+			
 		</div>
+		<button ng-click="bb()">提交</button>
 	</div>
 	
 </div>
