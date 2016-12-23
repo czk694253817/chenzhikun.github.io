@@ -8,11 +8,13 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('stsCon',['$scope',"$rootScope","$window",function ($scope,$window) {
+	.controller('stsCon',['$scope',"$window","$stateParams",function ($scope,$window,$stateParams) {
 		$scope.$window=$window;
 		$scope.ret=function(){
 			$window.history.back();
 		}
+		// $rootScope.aa=$stateParams.id;
+		console.log($stateParams.id)
 		
   }])
 	.controller('news',['$scope',"$rootScope","$state",function ($scope,$rootScope,$state) {

@@ -9,14 +9,15 @@
   * 
   * Main module of the application. 
   */ 
- angular.module('surveyTimeApp', ["ui.router","chart.js"]) 
+ angular.module('surveyTimeApp', ["ui.router","chart.js","ipCookie"]) 
  .constant("url","http://47.90.20.200:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
- $urlRouterProvider.when("","/home") 
+ $urlRouterProvider.when("","/login")
   $stateProvider.state("home",{ 
     url:"/home", 
        templateUrl:'views/home.html', 
-       controller:"stsCon" 
+       controller:"stsCon",
+       params:{id:null}
      }).state("home.news",{ 
     url:"/news", 
        templateUrl:'views/news.html', 
@@ -40,7 +41,7 @@
      }).state("home.lists",{ 
        url:"/lists", 
        templateUrl:"views/lists.html", 
-       controller:"zllCon"  
+       controller:"zllCon"
      }).state("zhuce",{ 
        url:"/zhuce", 
        templateUrl:"views/zhuce.html", 
