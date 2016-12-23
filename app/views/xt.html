@@ -4,11 +4,9 @@
 			<p>标题</p>
 			<input type="text" name="" id="" value="" placeholder="请输入题目标题"/>
 		</div>
-		<div class="box">
-			<div class="active">单选题</div>
-			<div>多选题</div>
-			<div>填空题</div>
-			<div>简答题</div>
+		<div class="s-box">
+		<div ng-repeat="x in sar" class="sts_type" ng-class="{sts_active:$index==0}" ng-click="xxk($index)">{{x}}</div>
+			
 		</div>
 		<div ui-view></div>
 		

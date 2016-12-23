@@ -123,14 +123,14 @@
 							<span></span>						
 						</div>
 
-						<input type="text" placeholder="输入密码" ng-model="password" ng-blur="pasBlur()" ng-focus="pasFocus()" ng-minlength="6" ng-maxlength="18" class="{{className1}}" required/>
+						<input type="password" placeholder="输入密码" ng-model="password" ng-blur="pasBlur()" ng-focus="pasFocus()" class="{{className1}}" />
 					</li>
 					<li>
 						<div>
 							<span></span>	
 						</div>
 						
-						<input type="text" placeholder="请再次输入密码" ng-model="password1"/>
+						<input type="password" placeholder="请再次输入密码" ng-model="password1" ng-blur="pas1Blur()" ng-focus="pas1Focus()" class="{{className2}}"/>
 					</li>
 					<!-- <div class="lj-yanzhengma">  
 		                   
@@ -143,8 +143,10 @@
 		            </div> -->
 				</ul>
 			</form>
+			<div class="lj-hide">用户名已被注册，换个手机号试试</div>
 		</div>
 		<input  ng-click="zhuce()" ng-disabled="oForm.$invalid" value="注册" class="btn btn-info lj-a" type="submit"/>
+
 	</div>
 </body>
 </html>
