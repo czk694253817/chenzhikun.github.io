@@ -1,4 +1,67 @@
-*{
-  margin:0;
-  padding:0;
+html{
+	font-size:3.125vw;
 }
+.questionaire_main{
+	width:100vw;
+	height:100vh;
+	background:url(../images/zjf_1.png) no-repeat;
+	background-size:cover;
+}
+.questionaire_title{
+	width:100vw;
+	height:9.6rem;
+	position:relative;
+}
+.questionaire_logo>img{
+	width:100%;
+	display:block;
+}
+.questionaire_logo{
+	width:6rem;
+	height:7.8rem;
+	position:absolute;
+	top:2rem;
+	left:2.2rem;
+}
+.questionaire_title>h1{
+	font-size:2.4rem;
+	color:#fff;
+	letter-spacing:0.1rem;
+	font-weight:normal;
+	margin-left:8.4rem;
+	padding-top:2rem;
+}
+.questionaire_title>h2{
+	width:22rem;
+	font-size:1.2rem;
+	color:#ffff00;
+	line-height:1.6rem;
+	margin:0.3rem 0 0 8.4rem;
+}
+.questionaire_question{
+	width:29.2rem;
+	height:28rem;
+	margin:0 auto;
+	background:url(../images/zjf_2.png) no-repeat;
+	background-size:100% 100%;
+}
+.questionaire_submit{
+	width:;
+	height:;
+	margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
