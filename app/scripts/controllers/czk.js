@@ -20,15 +20,35 @@ angular.module('surveyTimeApp')
   //   $scope.data2 = [4, 3, 2, 1];
   // }, 3000);
 
+  $scope.changeData = function(Arr){
+  	var newData = [];
+  	for(var i=0; i<Arr.length; i++){
+  		if(Arr[i].type == 0 || Arr[i].type == 1){
+  			var labels = [];
+  			var chartData = [];
+  			for(var j=0; j<Arr[i].opt.length; j++){
+  				labels[labels.length] = Arr[i].opt[j].op;
+  				chartData[chartData.length] = Arr[i].opt[j].num;
+  			}
+  			Arr[i].labels = labels;
+  			Arr[i].chartData = chartData;
+  			newData.push(Arr[i]);
+  		}else if(Arr[i].type == 2 || Arr[i].type == 3){
+  			newData.push(Arr[i]);
+  		}
+  	}
+  	return newData;
+  }
+
   $scope.dataj={
   "option":[
     {
       "title":"你每天学习几个小时？",
       "opt":[
         {"op":"7小时","num":1},
-        {"op":"8小时","num":1},
-        {"op":"9小时","num":1},
-        {"op":"10小时","num":1}
+        {"op":"8小时","num":2},
+        {"op":"9小时","num":3},
+        {"op":"10小时","num":4}
       ],
       "type":0,
       "oop":[]
@@ -73,34 +93,114 @@ angular.module('surveyTimeApp')
   "id":"6c4087e8acf439b7"
 };
 
+$scope.finalData = $scope.changeData($scope.dataj.option);
+
 
 }]).directive("test",[function(){
     return {
       restrict:"ECMA",
-      template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：<canvas class="chart chart-bar" chart-data="data" chart-labels="labels"  chart-series="series" chart-click="onClick"></canvas></p><p><span class="nei" ng-click="quanbu(x)">显示全部</span></p></div></div>',
       scope:{data:"=data"},
-      replace:true,
-      controller:function($scope,$rootscope){
-      	$scope.quanbu = function(x){
-      		// $rootscope.sj=$scope.x;
-      		// console.log($rootscope.sj);
+      template:function(s,a){
+      	if(a.type==0){
+      		// return "<div>{{data}}</div>";
+      		// return '<div><canvas class="chart chart-bar" chart-data="data.chartData" chart-labels="data.labels" chart-series="[]" chart-click="onClick"></canvas></div>';
+      		return '<div><canvas class="chart chart-pie" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div>';
+      	}else if(a.type==1){
+      		return "<div>bbb</div>";
+      	}else if(a.type==2){
+      		return "<div>ccc</div>";
+      	}else if(a.type==3){
+      		return "<div>ddd</div>";
+      	}
+      },// '<div class="tiankong"><div ng-repeat="x in data | dan"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：<div class="box"><canvas class="chart chart-pie" chart-data="data"  chart-labels="labels"  chart-series="series" chart-click="onClick"></canvas></div></p></div></div>',
+      // scope:{data:"=data"},
+      replace:true
+    }
+  // }]).directive("test2",[function(){
+  //   return {
+  //     restrict:"ECMA",
+  //     template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：<div class="box"><canvas class="chart chart-bar" chart-data="data"  chart-labels="labels"  chart-series="series" chart-click="onClick"></canvas></div></p></div></div>',
+  //     scope:{data:"=data"},
+  //     replace:true,
+  //     transclude:{},
+  //     link:function(s,e,a){
+  //     	s.quanbu=function(x){
+      		
+  //     	}
+  //     }
+  //   }
+  // }]).directive("test3",[function(){
+  //   return {
+  //     restrict:"ECMA",
+  //     template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：<span>{{x.oop[0]}}</span></p><p><span class="nei" ng-click="quanbu(x)">显示全部</span></p></div></div>',
+  //     scope:{data:"=data"},
+  //     replace:true,
+  //     transclude:{},
+  //     link:function(s,e,a){
+  //     	s.quanbu=function(x){
+      		
+  //     	}
+  //     }
+  //   }
+  // }]).directive("test4",[function(){
+  //   return {
+  //     restrict:"ECMA",
+  //     template:'<div class="tiankong"><div ng-repeat="x in data"><p><span>{{$index+1}}.</span>{{x.title}}</p><p class="nei2">答：</p><p><span class="nei" ng-click="quanbu(x)">显示全部</span></p></div></div>',
+  //     scope:{data:"=data"},
+  //     replace:true,
+  //     transclude:{},
+  //     link:function(s,e,a){
+  //     	s.quanbu=function(x){
+      		
+  //     	}
+  //     }
+  //   }
+  }]).filter("dan",[function(){
+    return function(e){
+    	var czkArr = [];
+      for(var i=0;i<e.length;i++){
+      	if(e[i].type == 0){
+      		czkArr.push(e[i]);
       	}
       }
-      // link:function(s,e,a){
-      // 	s.quanbu=function(x){
-      // 		$rootscope.sj=s.x
-      // 		console.log($rootscope.sj)	
-      // 	}
-      // }
+      return czkArr;
     }
-  }]).filter("g",[function(){
+  }]).filter("duo",[function(){
     return function(e){
-      if(e.type==0){
-      		
-      	return a;
-      }else if(e.type==1){
-
+      var czkArr = [];
+      for(var i=0;i<e.length;i++){
+      	if(e[i].type == 1){
+      		czkArr.push(e[i]);
+      	}
       }
-        
+      return czkArr;
     }
-  }]);
+  }]).filter("tian",[function(){
+    return function(e){
+     var czkArr = [];
+      for(var i=0;i<e.length;i++){
+      	if(e[i].type == 2){
+      		czkArr.push(e[i]);
+      	}
+      }
+      return czkArr; 
+    }
+  }]).filter("jian",[function(){
+    return function(e){
+      var czkArr = [];
+      for(var i=0;i<e.length;i++){
+      	if(e[i].type == 3){
+      		czkArr.push(e[i]);
+      	}
+      }
+      return czkArr; 
+    }
+  }])
+  // .directive("piechart",function(){
+  // 	return {
+  // 		restrict: "ECMA",
+  // 		replace: true,
+  // 		scope: {},
+  // 		template:'<div><canvas class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" chart-colors="blue"></canvas></div>';
+  // 	}
+  // })
