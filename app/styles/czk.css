@@ -42,3 +42,13 @@ html{
 .nei2{
 	padding-left: 1rem;
 }
+.zhong{
+	width: 100vw;
+	min-height: 100vh;
+	padding-bottom: 5rem;
+	background: #f3f3f3;
+
+}
+.xiang{
+	padding-left: 1rem;
+}
