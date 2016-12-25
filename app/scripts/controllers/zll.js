@@ -8,8 +8,10 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-  .controller('zllCon', ["$scope","$rootScope","$http","url","$state",function($scope,$rootScope,$http,url,$state){
-  	
+  .controller('zllCon', ["$scope","$http","url","$state","$stateParams",function($scope,$http,url,$state,$stateParams){
+  	// $rootScope.aa=$stateParams.id;
+  	// $rootScope.uid = $stateParams.id;
+  	console.log($stateParams.id);
   	$scope.ll=false;
   	$scope.zhu=false;
 		$scope.shu=0;
@@ -88,7 +90,7 @@ angular.module('surveyTimeApp')
   }).filter('offset', function() { 
       return function(arr,ss) {
 
-    return arr.slice(6*ss,6*(ss+1))
+    return arr.slice(6*ss,6*(ss+1));
 
       
       };

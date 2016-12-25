@@ -9,34 +9,59 @@
  */
 
 angular.module('surveyTimeApp')
-  .controller('loginCon', ["$scope","$http","url","$rootScope",function ($scope,$http,url,$rootScope) {
+  .controller('loginCon', ["$scope","$http","url","$state","$stateParams","$rootScope","ipCookie",function ($scope,$http,url,$state,$stateParams,$rootScope,ipCookie) {
   	$scope.user="";
     $scope.password="";
 
   	$scope.user=$rootScope.user
     $scope.password=$rootScope.password
-  	$scope.userBlur=function(){  
-  		if(!$scope.user.match(/^[1][34578](\d{9})$/)){
-        $scope.user="手机格式错误";
-        $scope.className="lj-red"
-      } 		
+  	$scope.userBlur=function(){
+      if($scope.user){
+        if(!$scope.user.match(/^[1][34578](\d{9})$/)){
+          $scope.user="手机格式错误";
+          $scope.className="lj-red";
+        } 
+      }  
+  				
   	}
     $scope.userFocus=function(){      
       if($scope.className!="lj-black"){
         $scope.user="";
-        $scope.className="lj-black"
+        $scope.className="lj-black";
       }
     }
+    $scope.pasFocus=function(){
+      angular.element(".lj-a").attr("type","password");
+    }
     $scope.login=function(){
-      $http({
-          method:"post",
-          url:url+"users/login",
-          data:{"username":$scope.user,"password":$scope.password}
-        }).then(function(reponse){
-            console.log(reponse)
-        },function(reponse){
-            console.log(reponse)
-        })
+      
+      if(!$scope.user){
+        $scope.className="lj-red"
+        $scope.user="手机号不能为空"
+      }
+      if(!$scope.password){
+        $scope.className1="lj-red"
+        angular.element(".lj-a").attr("type","text")
+        $scope.password="密码不能为空";
+        
+      }
+      if($scope.user.match(/^[1][34578](\d{9})$/)){
+        $http({
+            method:"post",
+            url:url+"users/login",
+            data:{"username":$scope.user,"password":$scope.password}
+          }).then(function(reponse){
+              $scope.uid=reponse.data.uid
+              $state.go("home",{"id":$scope.uid});
+              
+
+
+
+          },function(reponse){
+
+              console.log("用户名或密码错误")
+          })
+      }
     }
         
       
@@ -44,7 +69,7 @@ angular.module('surveyTimeApp')
   	
   }])
 
-  .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope",function ($scope,$http,url,$timeout,$location,$state,$rootScope) {
+  .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope","ipCookie",function ($scope,$http,url,$timeout,$location,$state,$rootScope,ipCookie) {
     $scope.user="";
     $scope.password="";
     $scope.password1="";
@@ -146,7 +171,7 @@ angular.module('surveyTimeApp')
 
 
   }])
-  .controller('zhuyemianCon', ["$scope","$http",function ($scope,$http) {
+  .controller('zhuyemianCon', ["$scope","$http","ipCookie",function ($scope,$http,ipCookie) {
   	
   }]);
 // window.onload=function(){

@@ -199,7 +199,19 @@
 	border-radius: 5px;
 	margin: 2.5rem auto;
 }
-
+.s-bt>button{
+	display: block;
+	width: 60%;
+	height: 3.5rem;
+	line-height: 3.4rem;
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: #fff;
+	background: #9BD8FC;
+	border-radius: 5px;
+	margin: 2.5rem auto;
+}
 /*添加新题*/
 .s-t{
 	width: 90%;
@@ -261,6 +273,7 @@
 	border-radius: 5px;
 	resize: none;
 	margin-top:2rem;
+	margin-bottom: 6rem;
 }
 
 /*单选题*/
@@ -285,6 +298,16 @@
 	margin-bottom: 2rem;
 	line-height: 3rem;
 	text-indent: .5rem;
+	font-size: 1.2rem;
+}
+.s-dx>textarea{
+	display: block;
+	width:80% ;
+	height: 8rem;
+	margin-left: 2rem;
+	margin-bottom: 2rem;
+	line-height: 3rem;
+	padding-left: .5rem;
 	font-size: 1.2rem;
 }
 .s-dx>span{
