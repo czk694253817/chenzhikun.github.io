@@ -13,7 +13,7 @@
  angular.module('surveyTimeApp', ["ui.router","chart.js","ipCookie"]) 
  .constant("url","http://47.90.20.200:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
- $urlRouterProvider.when("","/home");
+ $urlRouterProvider.when("","/questionaire");
   $stateProvider.state("home",{ 
     url:"/home", 
        templateUrl:'views/home.html', 
@@ -24,7 +24,7 @@
        templateUrl:'views/news.html', 
        controller:"news" 
      }).state("home.results",{ 
-    url:"/results", 
+    url:"/results/:producerId",  
        templateUrl:'views/results.html', 
        controller:"czkCon" 
      }).state("home.topic",{ 
@@ -71,5 +71,9 @@
     }).state("home.topic.ststotk",{
       url:"/ststotk",
       templateUrl:'views/ststotk.html'
+    }).state("questionaire",{
+      url:"/questionaire",
+      templateUrl:"views/questionaire.html",
+      controller:"zjfCon"
     })
  }]); 
