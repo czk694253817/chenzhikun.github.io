@@ -2,6 +2,9 @@
   margin:0;
   padding:0;
 }
+a,a:hover{
+	color:#000;
+}
 html,body{
 			font-size:3.125vw;
 			margin:0;
@@ -63,10 +66,6 @@ html,body{
 			height:3.5rem;
 			margin-top: 2rem;
 			line-height: 3.5rem
-		}
-		.lj-remember2 .lj-jizhu>input{
-			width:1.5rem;
-			height:1.5rem;
 		}
 		.lj-login2{
 			display: block;
@@ -148,15 +147,11 @@ html,body{
                 float:right;  
             }  
             /*层级选择器*/  
-            #lj-search_pass_link a{  
+            #lj-search_pass_link span{  
                 color:#000000;  
                 text-decoration:none;                 
             }  
-            /*伪类*/  
-            #lj-search_pass_link a:hover{  
-                color:#ff0000;  
-                text-decoration:underline;  
-            }  
+             
             .lj-btn{  
                 width:70%;  
                 margin-left:15%;  

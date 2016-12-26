@@ -10,10 +10,11 @@
   * Main module of the application. 
   */ 
 
+
  angular.module('surveyTimeApp', ["ui.router","chart.js"]) 
  .constant("url","http://surveytime.cn:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
- $urlRouterProvider.when("","/home")
+ $urlRouterProvider.when("","/login")
   $stateProvider.state("home",{ 
     url:"/home", 
        templateUrl:'views/home.html', 

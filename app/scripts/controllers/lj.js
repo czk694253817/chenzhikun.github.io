@@ -9,12 +9,25 @@
  */
 
 angular.module('surveyTimeApp')
-  .controller('loginCon', ["$scope","$http","url","$state","$rootScope","ipCookie",function ($scope,$http,url,$state,$rootScope,ipCookie) {
+  .controller('loginCon', ["$scope","$http","url","$state","$rootScope","$cookies",function ($scope,$http,url,$state,$rootScope,$cookies) {
   	$scope.user="";
     $scope.password="";
 
   	$scope.user=$rootScope.user
     $scope.password=$rootScope.password
+    var ele2=angular.element(".lj-search_pass_link1")
+    var ele3=angular.element(".lj-jizhu1")
+    if($cookies.get("myuser")){
+      // $state.go("home",{"id":$cookies.get("myuid")});
+      $scope.lijiang=true;
+      ele2.attr("index","true")
+    }
+    if($cookies.get("myuser1")){
+      $scope.user=$cookies.get("myuser1");
+      $scope.password=$cookies.get("mypassword");
+      $scope.lijiang1=true;
+      ele3.attr("index","true")
+    }
   	$scope.userBlur=function(){
       if($scope.user){
         if(!$scope.user.match(/^[1][34578](\d{9})$/)){
@@ -22,7 +35,7 @@ angular.module('surveyTimeApp')
           $scope.className="lj-red";
         } 
       }  
-  				
+  				 
   	}
     $scope.userFocus=function(){      
       if($scope.className!="lj-black"){
@@ -58,9 +71,28 @@ angular.module('surveyTimeApp')
           }).then(function(reponse){
               $scope.uid=reponse.data.uid
               $state.go("home",{"id":$scope.uid});
+              if(ele2.attr("index")=="true"){
+                if(!$cookies.get("myuser")){
+                  var expireDate = new Date();
+                  expireDate.setDate(expireDate.getDate() + 7);
+                  $cookies.put("myuser",$scope.user,{expires:expireDate})
+                  $cookies.put("myuid",$scope.uid,{expires:expireDate})
+                }
+              }else{
+                $cookies.remove("myuser");
+                $cookies.remove("myuid");
+              }
+              if(ele3.attr("index")=="true"){
+                var expireDate = new Date();
+                expireDate.setDate(expireDate.getDate() + 7);
+                $cookies.put("myuser1",$scope.user,{expires:expireDate})
+                $cookies.put("mypassword",$scope.password,{expires:expireDate})
+              }else{
+                $cookies.remove("myuser1");
+                $cookies.remove("mypassword");
+              }
           },function(reponse){
-
-              var ele1 = angular.element(".lj-user-password");
+              var ele1 = angular.element(".lj-user-password")
               ele1.animate({"bottom":"40%","opacity":1},400,function(){
                 ele1.delay(1000).animate({"opacity":0});
               });
@@ -69,10 +101,47 @@ angular.module('surveyTimeApp')
 
     }
     $scope.coo=function(){
-      console.log(angular.element(".lj_cook"));
+      // console.log(angular.element(".lj_cook"));
+    }
+    // alert(angular.element(".lj-search_pass_link1").attr("index"))
+    
+    $scope.zidong=function(){
+      if(ele2.attr("index")=="false"){
+        ele2.attr("index","true")
+        $scope.lijiang=true
+      }else{
+        ele2.attr("index","false")
+        $scope.lijiang=false
+      }   
     }    
-      
+    $scope.zidong1=function(){
+      if(ele2.attr("index")=="false"){
+        ele2.attr("index","true")
+        $scope.lijiang=true
+      }else{
+        ele2.attr("index","false")
+        $scope.lijiang=false
+      }
+    }  
 
+    $scope.zidongy=function(){
+      if(ele3.attr("index")=="false"){
+        ele3.attr("index","true")
+        $scope.lijiang1=true
+      }else{
+        ele3.attr("index","false")
+        $scope.lijiang1=false
+      }   
+    }    
+    $scope.zidongy1=function(){
+      if(ele3.attr("index")=="false"){
+        ele3.attr("index","true")
+        $scope.lijiang1=true
+      }else{
+        ele3.attr("index","false")
+        $scope.lijiang1=false
+      }
+    }
   	
   }])
 
@@ -178,7 +247,7 @@ angular.module('surveyTimeApp')
 
 
   }])
-  .controller('zhuyemianCon', ["$scope","$http","ipCookie",function ($scope,$http,ipCookie) {
+  .controller('zhuyemianCon', ["$scope","$http",function ($scope,$http) {
   	
   }]);
 // window.onload=function(){
