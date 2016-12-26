@@ -42,33 +42,33 @@
 .z-ju{
 	width:85%;
 }
-.badge{
-	width:1.3rem;
-	height: 1.4rem;
+.badgew{
+	display: block;
+	width:1.6rem;
+	height:2rem;
 	border-radius: 10%;
 	color: black;
-	margin-top: -1.6rem;
-	padding: 3px 2px;
+	line-height: 2rem;
+	float:right;
+	margin-top: -2.7rem;
+	margin-right: 1rem;
 	text-align: center;
 	background:#9fd6fd;
 }
 
-.list-group-item:last-child {
-	border:none;
-	 border-bottom:1px solid #ddd;
-}
 .list-group {
-	margin-top: 1.4rem;
+
 }
 .list-group >li:nth-child(1){
 	display: block;
 	
 }
 .list-group-item {
-	font-size: 1.4rem;
-	height: 2.7rem;
-	line-height: 1.4rem;
- border-bottom: none;
+	width:80%;
+	height: 3.7rem;
+ border: none;
+ font-size: 1.4rem;
+ padding: 0px 13px;
 }
       
 		.jiathis_style_m{
@@ -80,10 +80,21 @@
 		}
 		.z-d{
 			width:100%;
+		float: left;
 			height: 5rem;
 			background: #fff;
-            
-             display:none;
+}
+
+.z-ju{
+	width:100%;
+	height: 4rem;
+	border-radius: 4px;
+	background: #fff;
+	position: relative;
+    display: block;
+    line-height: 4rem;
+    float: left;
+    border-top: 1px solid #ddd;
 }
 
 		.zk-p{
@@ -92,6 +103,11 @@
 		float: left;
 		margin-top: .6rem;
 		}	
+		.pager{
+			float: left;
+			margin-top: 2rem;
+			margin-left: 7rem;
+		}
 		.zk-p img{
 			width:2.4rem;
 			height: 2.1rem;
@@ -108,7 +124,7 @@
 		.y-yin{
 			width:100vw;
 			height: 100vh;
-			z-index: 1;
+			z-index: 999;
 			position: absolute;
 			top:0;
 			left:0;
@@ -123,4 +139,14 @@
 			position: fixed;
 			bottom: 0rem;
 		
+}
+.bshare-custom {
+    font-size: 14px !important;
+    line-height: 27px !important;
+}
+.zllCss{
+	width:30px !important;
+	height:30px !important;
+	background-size: 30px 30px !important;
+	display: block;
 }

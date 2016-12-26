@@ -76,7 +76,7 @@ angular.module('surveyTimeApp')
   	
   }])
 
-  .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope","ipCookie",function ($scope,$http,url,$timeout,$location,$state,$rootScope,ipCookie) {
+  .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope",function ($scope,$http,url,$timeout,$location,$state,$rootScope) {
     $scope.user="";
     $scope.password="";
     $scope.password1="";
