@@ -221,11 +221,12 @@
 					</div>
 					<div class="lj-remember2">
 						<div class="lj-jizhu">
-							<input type="checkbox" class="lj_cook" ng-click="coo()" index="true"/>
-							<span>记住密码</span>	
+							<input type="checkbox" class="lj_cook lj-jizhu1" ng-click="coo()" index="false" ng-click="zidongy1()" ng-checked="lijiang1"/>
+							<span ng-click="zidongy()">记住密码</span>	
 						</div>
-						<div id="lj-search_pass_link">  
-			                <a href="javascript:;">忘记密码？</a>  
+						<div id="lj-search_pass_link">
+							<input type="checkbox" index="false" class="lj-search_pass_link1" ng-checked="lijiang" ng-click="zidong1()">  
+			                <span ng-click="zidong()">自动登录</span>  
 			            </div>
 					</div>
 					  
