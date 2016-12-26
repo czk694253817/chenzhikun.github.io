@@ -60,7 +60,10 @@ angular.module('surveyTimeApp')
               $state.go("home",{"id":$scope.uid});
           },function(reponse){
 
-              console.log("用户名或密码错误")
+              var ele1 = angular.element(".lj-user-password");
+              ele1.animate({"bottom":"40%","opacity":1},400,function(){
+                ele1.delay(1000).animate({"opacity":0});
+              });
           })
       }
 
