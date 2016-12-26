@@ -217,11 +217,11 @@
 					</div>
 					<div class="lj-input2">
 						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-						<input type="password" placeholder="请输入密码" ng-model="password"  ng-blur="pasBlur()" ng-focus="pasFocus()"  class="{{className1}}" />
+						<input type="password" placeholder="请输入密码" ng-model="password"  ng-blur="pasBlur()" ng-focus="pasFocus()"  class="{{className1}} lj-passwords"/>
 					</div>
 					<div class="lj-remember2">
 						<div class="lj-jizhu">
-							<input type="checkbox"/>
+							<input type="checkbox" class="lj_cook" ng-click="coo()" index="true"/>
 							<span>记住密码</span>	
 						</div>
 						<div id="lj-search_pass_link">  

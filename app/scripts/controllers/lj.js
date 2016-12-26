@@ -9,7 +9,7 @@
  */
 
 angular.module('surveyTimeApp')
-  .controller('loginCon', ["$scope","$http","url","$state","$stateParams","$rootScope","ipCookie",function ($scope,$http,url,$state,$stateParams,$rootScope,ipCookie) {
+  .controller('loginCon', ["$scope","$http","url","$state","$rootScope","ipCookie",function ($scope,$http,url,$state,$rootScope,ipCookie) {
   	$scope.user="";
     $scope.password="";
 
@@ -31,7 +31,12 @@ angular.module('surveyTimeApp')
       }
     }
     $scope.pasFocus=function(){
-      angular.element(".lj-a").attr("type","password");
+      if($scope.className1!="lj-black"){
+        $scope.password="";
+        $scope.className1="lj-black";
+        angular.element(".lj-passwords").attr("type","password");
+      }
+      
     }
     $scope.login=function(){
       
@@ -41,7 +46,7 @@ angular.module('surveyTimeApp')
       }
       if(!$scope.password){
         $scope.className1="lj-red"
-        angular.element(".lj-a").attr("type","text")
+        angular.element(".lj-passwords").attr("type","text")
         $scope.password="密码不能为空";
         
       }
@@ -53,17 +58,16 @@ angular.module('surveyTimeApp')
           }).then(function(reponse){
               $scope.uid=reponse.data.uid
               $state.go("home",{"id":$scope.uid});
-              
-
-
-
           },function(reponse){
 
               console.log("用户名或密码错误")
           })
       }
+
     }
-        
+    $scope.coo=function(){
+      console.log(angular.element(".lj_cook"));
+    }    
       
 
   	
