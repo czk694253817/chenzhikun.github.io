@@ -9,6 +9,7 @@
   * 
   * Main module of the application. 
   */ 
+
  angular.module('surveyTimeApp', ["ui.router","chart.js","ipCookie"]) 
  .constant("url","http://47.90.20.200:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
@@ -57,7 +58,18 @@
      }).state("404",{ 
        url:"/404", 
        templateUrl:"404.html" 
-     }) 
+     }).state("home.xt.dxt",{
+      url:"/dxt",
+      templateUrl:'views/stsdxt.html'
+    }).state("home.xt.tk",{
+      url:"/tk",
+      templateUrl:'views/ststk.html',
+      controller:"dx"
+    }).state("home.xt.jd",{
+      url:"/jd",
+      templateUrl:'views/stsjd.html'
+    }).state("home.topic.ststotk",{
+      url:"/ststotk",
+      templateUrl:'views/ststotk.html'
+    })
  }]); 
-
-
