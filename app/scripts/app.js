@@ -70,6 +70,7 @@
       templateUrl:'views/stsjd.html'
     }).state("home.topic.ststotk",{
       url:"/ststotk",
-      templateUrl:'views/ststotk.html'
+      templateUrl:'views/ststotk.html',
+      controller:"ststotk"
     })
  }]); 
