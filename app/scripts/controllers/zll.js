@@ -20,7 +20,7 @@ angular.module('surveyTimeApp')
 		$http({
 			method:'get',
 	        url:url+'item'
-	       /* params:{uid:$scope.id}*/
+	        params:{uid:'596d184e5cb5f8c5'}
 			}).then(function(e){
 				console.log(e)
 				if(e==''||e=='null'){
