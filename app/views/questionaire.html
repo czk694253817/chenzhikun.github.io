@@ -1,0 +1,43 @@
+<div class="questionaire_main">
+	<div class="zjfWain">您还没有回答该问题 ~~</div>
+	<div class="questionaire_title">
+		<div class="questionaire_logo">
+			<img src="../images/zjf_3.png">
+		</div>
+		<h1>问卷调查</h1>
+		<h2>{{zjfdata.title | addqstmark}}</h2>
+	</div>
+	<div class="all_question">
+
+	<zjfoptionone style="position:absolute;" ng-repeat="key in zjfdata.option" zjfd="key" zjftype="{{key.type}}" proindex="{{$index}}" ng-show="$index==opindex"></zjfoptionone>
+	
+	<!-- <div class="questionaire_question" ng-repeat="key in zjfdata.option" zjftype="{{key.type}}"> -->
+		<!-- <div class="question_title"> 	
+			{{key.title | addqstmark}}
+		</div> -->
+		<!-- <div class="zjf_options"> -->
+			<!-- <zjfoptionone ng-repeat="key in arr">{{key.name}}</zjfoptionone> -->
+			<!-- <div ng-repeat="opo in key.opt">
+				<span class="zjf_state"></span>
+				<span>{{opo.op}}</span>
+			</div> -->
+
+			<!-- <div>
+				<span class="zjf_state"></span>
+				<span>你每天学习几小时你每天学习几</span>
+			</div>
+			<div>
+				<span class="zjf_state"></span>
+				<span>你每天学习几小时你每天学习</span>
+			</div> -->
+		<!-- </div> -->
+		<!-- <questionone></questionone> -->
+
+	<!-- </div> -->
+	</div>
+	<div class="questionaire_submit btn btn-warning" ng-click="changeQes()">
+		提交选择
+	</div>
+	<!-- <summernote airMode height="100"></summernote> -->
+	<!-- <summernote><span style="font-weight: bold;">This is initial text.</span></summernote> -->
+</div>

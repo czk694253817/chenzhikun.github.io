@@ -1,4 +1,127 @@
 *{
-  margin:0;
-  padding:0;
+	margin:0;
+	padding:0;
 }
+.questionaire_main{
+	width:100vw;
+	height:100vh;
+	background:url(../images/zjf_1.png) no-repeat;
+	background-size:cover;
+}
+.questionaire_title{
+	width:100vw;
+	height:9.6rem;
+	position:relative;
+}
+.questionaire_logo>img{
+	width:100%;
+	display:block;
+}
+.questionaire_logo{
+	width:6rem;
+	height:7.8rem;
+	position:absolute;
+	top:2rem;
+	left:2.2rem;
+}
+.questionaire_title>h1{
+	font-size:2.4rem;
+	color:#fff;
+	letter-spacing:0.1rem;
+	font-weight:normal;
+	margin-left:8.4rem;
+	padding-top:2rem;
+}
+.questionaire_title>h2{
+	width:22rem;
+	font-size:1.3rem;
+	color:#ffff00;
+	line-height:1.8rem;
+	margin:0.3rem 0 0 8.4rem;
+}
+.all_question{
+	width:29.2rem;
+	height:28rem;
+	margin:0 auto;
+}
+.questionaire_question{
+	width:29.2rem;
+	height:28rem;
+	background:url(../images/zjf_2.png) no-repeat;
+	background-size:100% 100%;
+	/*position:absolute;*/
+}
+.question_title{
+	width:24rem;
+	margin:0 auto;
+	font-size:1.8rem;
+	padding-top:3rem;
+	font-weight:600;
+	color:#0f0e13;
+}
+.questionaire_submit{
+	display:block;
+	width:28.8rem;
+	line-height:4rem;
+	font-size:1.4rem;
+	margin:2.6rem auto 0 auto; 
+}
+.zjf_options{
+	width:24rem;
+	margin:0 auto;
+	font-size:1.4rem;
+	margin-top:2rem;
+}
+.zjf_options>div{
+	width:24rem;
+	margin-top:1rem;
+	overflow:hidden;
+}
+.zjf_state{
+	display:block;
+	width:1.6rem;
+	height:1.6rem;
+	border:0.02rem solid #c0c0c2;
+	border-radius:50%;
+	float:left;
+	margin-right:1rem;
+}
+.zjf_bgactive{
+	background:#fe4b4f;
+}
+.zjf_colactive{
+	color:#fe4b4f !important;
+}
+.zjf_options>div>span:nth-child(2){
+	width:21rem;
+	color:#c0c0c2;
+	line-height:1.8rem;
+	font-size:1.4rem;
+	float:left;
+}
+.formpos{
+	height:3.6rem;
+	margin-top:2rem;
+	font-size: 1.2rem;
+}
+.zjf_summernote{
+	width:80%;
+}
+.zjfWain{
+	width:90vw;
+	height:4rem;
+	text-align:center;
+	line-height:4rem;
+	font-size:1.4rem;
+	color:#fff;
+	background:rgba(0,0,0,.6);
+	position:fixed;
+	bottom:0;
+	left:5vw;
+	border-radius: 0.4rem;
+}
+
+
+
+
+
