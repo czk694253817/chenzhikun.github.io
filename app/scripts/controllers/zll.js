@@ -11,20 +11,26 @@ angular.module('surveyTimeApp')
   .controller('zllCon', ["$scope","$http","url","$state","$stateParams",function($scope,$http,url,$state,$stateParams){
   	// $rootScope.aa=$stateParams.id;
   	// $rootScope.uid = $stateParams.id;
+  	$scope.id=$stateParams.id;
   	console.log($stateParams.id);
   	$scope.ll=false;
   	$scope.zhu=false;
+  	/*$scope.we=true;*/
 		$scope.shu=0;
 		$http({
 			method:'get',
-	        url:url+'item/'
+	        url:url+'item'
+	       /* params:{uid:$scope.id}*/
 			}).then(function(e){
-				if(e.data!=''){
-					$scope.we=false;
-					$scope.as=true;
-				}else{
+				console.log(e)
+				if(e==''||e=='null'){
+					console.log('ppp')
 					$scope.we=true;
 					$scope.as=false;
+				}else{
+					console.log('aaa')
+					$scope.we=false;
+					$scope.as=true;
 				}
 				if(e.data.length>=6){
 					$scope.zhu=true;
@@ -78,11 +84,11 @@ angular.module('surveyTimeApp')
 	}]).directive('shuju',function(){//自定义指令
     return {
         restrict: 'EACM',//仅限元素名调用
-        template: '<div><li class="list-group-item"  ><div class="z-ju" ng-click="xq(x.id)">{{x.title}}</div><span class="badge" ng-click="xw()">0</span></li><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>查看</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+        template: '<div><div class="z-ju" ><li class="list-group-item" ng-click="xq(x.id)" >{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>查看</span></div><div class="zk-p"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
      
   link:function(scope,ele,attr){
 	  scope.xw=function(){
-      ele.find(".z-d").toggle(200);	
+      ele.find(".z-d").slideToggle(200);	
 			}
 	    			}
            
@@ -96,3 +102,28 @@ angular.module('surveyTimeApp')
       };
     
   });
+
+
+$(document).ready(function() {  
+    iBShare.init();    //初始化  
+});  
+ 
+//bShare分享  
+
+var iBShare = {  
+    //初始化  
+    init: function() {  
+        var $shareBox = $(".bshare-custom");  
+ 
+        //绑定分享事件  
+        $shareBox.children("a").click(function() {  
+            var parents = $(this).parent();  
+            bShare.addEntry({  
+                title: parents.attr("title"),  
+                url: parents.attr("url"),  
+                summary: parents.attr("summary"),  
+                pic: parents.attr("pic")  
+            });  
+        });  
+    }  
+}  
