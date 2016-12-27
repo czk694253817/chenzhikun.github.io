@@ -23,10 +23,10 @@
         <!-- </div> -->
         <!-- <div>{{finalData}}</div> -->
         <div>
-            <test ng-repeat="x in finalData | dan" type="0" data="x"></test>
-            <test ng-repeat="x in finalData | duo" type="1" data="x"></test>
-            <test ng-repeat="x in finalData | tian" type="2" data="x" add="czkadd()"></test>
-            <test ng-repeat="x in finalData | jian" type="3" data="x"></test>
+            <test ng-repeat="x in finalData | dan" type="0" data="x" index="$index"></test>
+            <test ng-repeat="x in finalData | duo" type="1" data="x" index="$index"></test>
+            <test ng-repeat="x in finalData | tian" type="2" data="x" index="$index"></test>
+            <test ng-repeat="x in finalData | jian" type="3" data="x" index="$index"></test>
         </div>
         <!-- <div ng-repeat="x in dataj.option">{{x.type}}</div> -->
     </div>
