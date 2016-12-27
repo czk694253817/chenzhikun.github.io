@@ -8,17 +8,42 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('stsCon',['$scope',"$window","$rootScope","$stateParams",function ($scope,$rootScope,$window,$stateParams) {
+	.controller('stsCon',['$scope',"$window","$rootScope","$state","$stateParams",function ($scope,$rootScope,$window,$state,$stateParams) {
 		// $scope.$window=$window;
+		/**/
 		// $scope.ret=function(){
-		// 	$window.history.back();
+		// 	window.location.go(-1)
 		// }
+		$scope.fix=true;
 		$scope.s_type=0;
 		$scope.sts_sqq=true;
 		$scope.sts_sqqq=true;
 		$rootScope.opend=[];
 		// $rootScope.aa=$stateParams.id;
-		// console.log($stateParams.id)
+		// console.log(,"")
+		$scope.sts_fo=function(index){
+			if(index==2){
+				angular.element(".sts_fo").eq(index).addClass("sts_color").siblings().removeClass("sts_color");
+				$scope.fix=false;
+			}else{
+				angular.element(".sts_fo").eq(index).addClass("sts_color").siblings().removeClass("sts_color");
+			}			
+		}
+
+		/*设置*/
+		$scope.hid=function(){
+			$scope.fix=true;
+		}
+
+		$scope.tui=function(){
+			$scope.fix=true;
+			$state.go("home.login")
+		}
+
+		$scope.sts_xg=function(){
+			$scope.fix=true;
+			$state.go("reset")
+		}
 		
   }])
 	.controller('news',['$scope',"$rootScope","$state","mySer",function ($scope,$rootScope,$state,mySer) {
@@ -28,20 +53,27 @@ angular.module('surveyTimeApp')
 		
 		$scope.bool=false
 		$scope.aa = function(){
-			if($scope.title==''||$scope.title==undefined){
+			if($scope.ststitle==''||$scope.ststitle==undefined){
 				$scope.bool=true;
 			}else{
 				$scope.bool=false;
-				$rootScope.title = $scope.title;
+				$rootScope.ststitle = $scope.ststitle;
 				$state.go("home.topic")
 			}
 		}
 
 		
   }])
-	.controller('topic',['$scope',"$rootScope",'mySer',function ($scope,$rootScope,mySer) {
-    	// alert(mySer.wjtitle);
-    	// alert(mySer.wjtitle);
+	.controller('topic',['$scope','$rootScope','http','mySer','$stateParams','url','$state',function ($scope,$rootScope,http,mySer,$stateParams,url,$state) {
+    	$scope.bb=function(){
+
+    		// mySer.stsobj.push({"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id})
+    		// console.log(mySer.stsobj)
+    		http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id},function(e){
+    			$scope.data=e;
+    			$state.go("home.lists")
+    		})
+    	}
   }])
 	.controller('dx',['$scope','$rootScope','$state','mySer',function ($scope,$rootScope,$state,mySer) {
     	$scope.arr=[{"op":"选项名称"},{"op":"选项名称"}];
@@ -89,11 +121,10 @@ angular.module('surveyTimeApp')
     			return $scope.sts_sqq=false;
     		}else{
     			$scope.sts_sqq=true;
-    			$scope.boss=[];
+    			$rootScope.boss=[];
     			$scope.opt=[];
     			if($scope.s_type==0){
     				for(var i=0;i<$scope.arr.length;i++){
-		    			console.log($scope.arr[i].detail)
 		    			if($scope.arr[i].detail==undefined||$scope.arr[i].detail==""){
 		    				return $scope.sts_sqqq=false;
 		    			}else{
@@ -103,13 +134,10 @@ angular.module('surveyTimeApp')
 		    			
 		    		}
 		    		mySer.wjtitle.push({"lx":"单选题","t":$scope.titl})
-		    		$scope.boss.push($scope.opt)
-		    		$scope.boss.push({"title":$scope.titl})
-		    		$scope.boss.push({"type":$scope.s_type})
-		    		$scope.boss.push({"oop":[]})
+		    		mySer.boss.push({"opt":$scope.opt,"title":$scope.titl,"type":$scope.s_type,"oop":[]})
+		    		
     			}else if($scope.s_type==1){
     				for(var i=0;i<$scope.sarr.length;i++){
-		    			console.log($scope.sarr[i].detail)
 		    			if($scope.sarr[i].detail==undefined||$scope.sarr[i].detail==""){
 		    				return $scope.sts_sqqq=false;
 		    			}else{
@@ -119,27 +147,21 @@ angular.module('surveyTimeApp')
 		    			
 		    		}
 		    		mySer.wjtitle.push({"lx":"多选题","t":$scope.titl})
-		    		$scope.boss.push($scope.opt)
-		    		$scope.boss.push({"title":$scope.titl})
-		    		$scope.boss.push({"type":$scope.s_type})
-		    		$scope.boss.push({"oop":[]})
+		    		mySer.boss.push({"opt":$scope.opt,"title":$scope.titl,"type":$scope.s_type,"oop":[]})
+		    		
     			}else if($scope.s_type==2){
     				mySer.wjtitle.push({"lx":"填空题","t":$scope.titl})
-    				$scope.boss.push({"title":$scope.titl})
-    				$scope.boss.push({"type":$scope.s_type})
-    				$scope.boss.push({"opt":[]})
-    				$scope.boss.push({"oop":[]})
+    				mySer.boss.push({"title":$scope.titl,"type":$scope.s_type,"opt":[],"oop":[]})
+    				
     			}else if($scope.s_type==3){
     				mySer.wjtitle.push({"lx":"简答题","t":$scope.titl})
-    				$scope.boss.push({"title":$scope.titl})
-    				$scope.boss.push({"type":$scope.s_type})
-    				$scope.boss.push({"oop":[]})
-    				$scope.boss.push({"opt":[]})
+    				mySer.boss.push({"title":$scope.titl,"type":$scope.s_type,"oop":[],"opt":[]})
+    				
     			}
-	    		$rootScope.boss=$scope.boss;
-	    		console.log($rootScope.boss);
+	    		// $rootScope.boss=$scope.boss;
+	    		console.log(mySer.boss);
 	    		$state.go("home.topic.ststotk");
-	    		mySer.stsobj.push({"option":$scope.boss})
+	    		
 	    		// $rootScope.opend.push({"option":$scope.boss})
     		}
     	}
@@ -160,8 +182,32 @@ angular.module('surveyTimeApp')
   .service("mySer",function(){
   	this.wjtitle = [];
   	this.stsobj=[];
+  	this.boss=[];
   })
-	
+  .service("http",["$http",function($http){
+    return {
+      get:function(url,cbk){
+        $http({
+          url:url,
+          method:"get"
+        }).then(function(e){
+          cbk(e)
+        },function(){})
+
+      },
+      post:function(url,data,cbk){
+        $http({
+          url:url,
+          method:"post",
+          data:data
+        }).then(function(e){
+          cbk(e)
+        },function(){})
+
+      }
+    }
+  }])
+
 	
 	
 	
