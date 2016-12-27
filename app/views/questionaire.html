@@ -8,8 +8,11 @@
 		<h2>{{zjfdata.title | addqstmark}}</h2>
 	</div>
 	<div class="all_question">
-
-	<zjfoptionone style="position:absolute;" ng-repeat="key in zjfdata.option" zjfd="key" zjftype="{{key.type}}" proindex="{{$index}}" ng-show="$index==opindex"></zjfoptionone>
+		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:0" type="0" zjfd="key" ng-show="opindex == $index"></zjfoptionone>
+		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:1" type="1" zjfd="key" ng-show="opindex == $index + index1"></zjfoptionone>
+		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:2" type="2" zjfd="key" ng-show="opindex == $index + index1 + index2"></zjfoptionone>
+		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:3" type="3" zjfd="key" ng-show="opindex == $index + index1 + index2 +index3"></zjfoptionone>
+	<!-- <zjfoptionone style="position:absolute;" ng-repeat="key in zjfdata.option" zjfd="key" zjftype="{{key.type}}" proindex="{{$index}}" ng-show="$index==opindex"></zjfoptionone> -->
 	
 	<!-- <div class="questionaire_question" ng-repeat="key in zjfdata.option" zjftype="{{key.type}}"> -->
 		<!-- <div class="question_title"> 	
@@ -38,6 +41,8 @@
 	<div class="questionaire_submit btn btn-warning" ng-click="changeQes()">
 		提交选择
 	</div>
+	<!-- <div ng-click="fn()">点击执行</div> -->
+
 	<!-- <summernote airMode height="100"></summernote> -->
 	<!-- <summernote><span style="font-weight: bold;">This is initial text.</span></summernote> -->
 </div>
