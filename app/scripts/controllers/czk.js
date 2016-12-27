@@ -9,131 +9,59 @@
  */
 angular.module('surveyTimeApp')
 .controller("czkCon", ['$scope', '$timeout','$rootScope','service','url','$location','$http',function ($scope,$rootScope, $timeout ,service,url,$location,$http) { 
-   $http({
-          url:url+"item/faa1204091c488b1",
-          method:"get"
-        }).then(function(e){
-           $scope.dataj=e.data;
 
-        },function(){
-
-        })
 $scope.guanbi=function(){
   $scope.html=null;
 }
 
 $scope.html=null;
 $scope.$on("oopOne",function(event,data){
-console.log(data); 
+// console.log(data); 
   $scope.html = data;
 
 })
-  // var idurl=$location.absUrl();
-  // var idurl2=idurl.splice(10);
-  // alert(idurl2)
-  $scope.changeData = function(Arr){
-  	var newData = [];
-  	for(var i=0; i<Arr.length; i++){
-  		if(Arr[i].type == 0 || Arr[i].type == 1){
-  			var labels = [];
-  			var chartData = [];
-  			for(var j=0; j<Arr[i].opt.length; j++){
-  				labels[labels.length] = Arr[i].opt[j].op;
-  				chartData[chartData.length] = Arr[i].opt[j].num;
-  			}
-  			Arr[i].labels = labels;
-  			Arr[i].chartData = chartData;
-  			newData.push(Arr[i]);
-  		}else if(Arr[i].type == 2 || Arr[i].type == 3){
-  			newData.push(Arr[i]);
-  		}
-  	}
-  	return newData;
-  }
- 
-  console.log($scope.dataj);
+  var idurl=$location.absUrl();
+  var idurl2=new Array();
+  var idurl3=idurl.split("=");
 
-  // service.get(url+"item/faa1204091c488b1",function(e){
-  //     $scope.dataj=e.data;
-  //     // $scope.finalData = $scope.changeData($scope.dataj.option);
-  //  })
-  
-  // $http({
-  //   method: "get",
-  //   // params: {"uid":"596d184e5cb5f8c5"},
-  //   url: url + "item/faa1204091c488b1"
-  // }).then(function(e){
-  //   console.log(e);
-  // })
-//   $scope.dataj={
-//   "option":[
-//     {
-//       "title":"你每天学习几个小时？",
-//       "opt":[
-//         {"op":"7小时","num":1},
-//         {"op":"8小时","num":2},
-//         {"op":"9小时","num":3},
-//         {"op":"10小时","num":4}
-//       ],
-//       "type":0,
-//       "oop":[]
-//     },
-//     {
-//       "title":"你每天睡觉几小时？",
-//       "opt":[
-//         {"op":"7小时","num":1},
-//         {"op":"8小时","num":2},
-//         {"op":"9小时","num":3},
-//         {"op":"10小时","num":3}
-//       ],
-//       "type":1,
-//       "oop":[]
-//     },
-//     {
-//       "title":"你每天吃饭用多久？",
-//       "opt":[],
-//       "type":2,
-//       "oop":[
-//         "1小时",
-//         "2小时",
-//         "3小时",
-//         "4小时"
-//       ]
-//     },
-//     {
-//       "title":"你每天运动多久？",
-//       "opt":[],
-//       "type":3,
-//       "oop":
-//       [
-//         "我每天运动1小时",
-//         "我每天运动2小时",
-//         "我每天运动3小时",
-//         "我每天运动4小时"
-//       ]
-//     }
-//   ],
-//   "uid":"56aa508e239548c2",
-//   "title":"你热爱学习吗",
-//   "id":"6c4087e8acf439b7"
-// };
+  service.get(url+"item/"+idurl3[1],function(e){
+      $scope.dataj = e.data;
+      $scope.finalData = $scope.changeData($scope.dataj.option);
+      // console.log( $scope.dataj);
 
-
-
-
+   }); 
+   $scope.changeData = function(Arr){
+    var newData = [];
+    for(var i=0; i<Arr.length; i++){
+      if(Arr[i].type == 0 || Arr[i].type == 1){
+        var labels = [];
+        var chartData = [];
+        for(var j=0; j<Arr[i].opt.length; j++){
+          labels[labels.length] = Arr[i].opt[j].op;
+          chartData[chartData.length] = Arr[i].opt[j].num;
+        }
+        Arr[i].labels = labels;
+        Arr[i].chartData = chartData;
+        newData.push(Arr[i]);
+      }else if(Arr[i].type == 2 || Arr[i].type == 3){
+        newData.push(Arr[i]);
+      }
+    }
+    return newData;
+  }; 
 }]).directive("test",[function(){
     return {
       restrict:"ECMA",
-      scope:{data:"=data",add:"&add"},
+      scope:{data:"=data",add:"&add","czkindex":"=index"},
       template:function(s,a){
       	if(a.type==0){
-      		return '<div><p class="czkwt"><span>{{$index+1}}.</span>{{data.title}}</p><p class="nei2"><div class="czkbox2"><canvas class="chart chart-pie" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div></p></div>';
+      		return '<div><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（单选题）</span></p><p class="nei2"><div class="czkbox2"><canvas class="chart chart-pie" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div></p></div>';
       	}else if(a.type==1){
-      		return '<div><p class="czkwt"><span>{{$index+1}}.</span>{{data.title}}</p><p class="nei2"><div class="czkbox"><canvas class="chart chart-bar" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div></p></div>';
+      		return '<div><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（多选题）</span></p><p class="nei2"><div class="czkbox"><canvas class="chart chart-bar" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div></p></div>';
       	}else if(a.type==2){
-      		return '<div class="czkti"><p class="czkwt"><span>{{$index+1}}.</span>{{data.title}}</p><p class="nei2">{{data.oop[0]}}<p><span class="nei" ng-click="add()">显示全部</span></p></div>';
+      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（填空题）</span></p><p class="nei2">{{data.oop[0]}}<p><span class="nei" ng-click="add()">【显示全部】</span></p></div>';
       	}else if(a.type==3){
-      		return '<div class="czkti"><p class="czkwt"><span>{{$index+1}}.</span>{{data.title}}</p><p class="nei2">{{data.oop[0]}}</p><p><span class="nei" ng-click="add()">显示全部</span></p></div>';
+      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（简答题）</span></p><p class="nei2">{{data.oop[0]}}</p><p><span class="nei" ng-click="add()">【显示全部】</span></p></div>';
       	};
       },
       link:function(s,a){
@@ -145,43 +73,51 @@ console.log(data);
     }
   }]).filter("dan",[function(){
     return function(e){
-    	var czkArr = [];
+      if(e!=null){
+      var czkArr = [];
       for(var i=0; i<e.length; i++){
       	if(e[i].type == 0){
       		czkArr.push(e[i]);
       	}
       }
       return czkArr;
+     }
     }
   }]).filter("duo",[function(){
     return function(e){
+      if(e!=null){
       var czkArr = [];
-      for(var i=0;i<e.length;i++){
-      	if(e[i].type == 1){
-      		czkArr.push(e[i]);
-      	}
+      for(var i=0; i<e.length; i++){
+        if(e[i].type == 1){
+          czkArr.push(e[i]);
+        }
       }
       return czkArr;
+     }
     }
   }]).filter("tian",[function(){
     return function(e){
-     var czkArr = [];
-      for(var i=0;i<e.length;i++){
-      	if(e[i].type == 2){
-      		czkArr.push(e[i]);
-      	}
+      if(e!=null){
+      var czkArr = [];
+      for(var i=0; i<e.length; i++){
+        if(e[i].type == 2){
+          czkArr.push(e[i]);
+        }
       }
-      return czkArr; 
+      return czkArr;
+     }
     }
   }]).filter("jian",[function(){
     return function(e){
+      if(e!=null){
       var czkArr = [];
-      for(var i=0;i<e.length;i++){
-      	if(e[i].type == 3){
-      		czkArr.push(e[i]);
-      	}
+      for(var i=0; i<e.length; i++){
+        if(e[i].type == 3){
+          czkArr.push(e[i]);
+        }
       }
-      return czkArr; 
+      return czkArr;
+     }
     }
   }]).service("service",["$http",function($http){
     return {
