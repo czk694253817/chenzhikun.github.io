@@ -18,8 +18,10 @@
 
 	z-index: 1;
 }
-.z-zhu{
-
+.z-zhu p{
+margin-left: 100px;
+display: block;
+margin-top: 15px;
 }
 .z-zhu img{
 	width:11.3rem;
@@ -57,7 +59,9 @@
 }
 
 .list-group {
-
+width:100%;
+height: 23rem;
+margin-top: 1.4rem;
 }
 .list-group >li:nth-child(1){
 	display: block;
@@ -133,7 +137,7 @@
 		}
 		.z-kj{
 			width:100%;
-			height: 8rem;
+			height: 16rem;
 			background: #fff;
 			z-index: 9999999;
 			position: fixed;
@@ -141,12 +145,56 @@
 		
 }
 .bshare-custom {
-    font-size: 14px !important;
+    font-size: 18px !important;
     line-height: 27px !important;
 }
-.zllCss{
-	width:30px !important;
-	height:30px !important;
-	background-size: 30px 30px !important;
-	display: block;
+
+.bshare-custom a {
+	background-repeat:no-repeat !important;
+    padding-left: 73px !important;
+    margin-top: 13px !important;
+    margin-left: 27px !important;
 }
+
+.lk{
+				width:60px;
+				height: 60px;
+				display: block;
+				float: left;
+				margin-left: 29px !important;
+			}
+			.lk span{
+				text-align: center;
+				font-size: 12px;
+				display: block;
+			}
+			.bsTop{
+				width:208px !important;
+			}
+			.bsFrameDiv>div{
+				height:208px !important;
+			}
+			.sz-p{
+			color: goldenrod;
+			margin-left: 10px;
+			}
+			
+			.alertw{
+				width:80%;
+				height: 3rem;
+				background:rgba(0,0,0,.8);
+				position: fixed;
+				bottom:0;
+				left:10%;
+				color: #FFFFFF;
+				text-align: center;
+				font-size: 1.8rem;
+				line-height: 3rem;
+				border-radius: 0.4rem;
+				opacity:0;
+		}
+/*-webkit-animation:animation1 .5s ease-out  backwards;}
+@-webkit-keyframes animation1{
+    0%{-webkit-transform:translate(0,50px); opacity:0;}
+    100%{-webkit-transform:translate(0,0px); opacity:1;}
+}*/

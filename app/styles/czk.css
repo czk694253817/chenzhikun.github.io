@@ -27,8 +27,12 @@ html{
 	width: 15rem !important;
 	height: auto !important;
 	margin-bottom: 1rem !important;
+	padding-top: 0.5rem;
+}
+.czkbox2>canvas{
 	margin: 0 auto;
-	margin-top: 1rem;
+	width: 10rem;
+	margin-left: 6rem;
 }
 .tiankong{
 	width: 100%;
@@ -44,17 +48,18 @@ html{
 	font-size: 1.6rem;
 }
 .nei{
-	padding-left: 1rem;
-	color: blue;
-	font-size: 1.5rem;
+	padding-left: 1.5rem;
+	color: #2babf4;
+	font-size: 1rem;
 	margin-bottom: 2rem;
 }
 .nei2{
-	padding-left: 1rem;
+	padding-left: 2rem;
 	font-size: 1.5rem;
 }
 .czkwt{
 	font-size: 1.5rem;
+	padding-left: 1rem;
 }
 .zhong{
 	width: 100vw;

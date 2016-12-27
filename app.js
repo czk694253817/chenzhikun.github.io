@@ -75,9 +75,5 @@
       url:"/questionaire",
       templateUrl:"views/questionaire.html",
       controller:"zjfCon"
-    }).state("reset",{
-      url:"/reset",
-      templateUrl:"views/reset.html",
-      controller:"resetCon"
     })
  }]); 

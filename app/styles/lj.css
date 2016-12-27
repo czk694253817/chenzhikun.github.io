@@ -12,7 +12,7 @@ html,body{
 		}
 		.lj-wrap2{
 			width:100%;
-			height:55rem;
+			min-height:100vh;
 			background:url(../images/lj-beijing.png) no-repeat center;
 			background-size:100% 100%;
 		}
@@ -20,7 +20,8 @@ html,body{
 			width:85%;
 			height:48.5rem;
 			margin:0 auto;
-			padding-top: 3rem
+			padding-top: 3rem;
+			box-sizing:border-box;
 		}
 		.lj-main2>span{
 			display: block;
@@ -198,7 +199,7 @@ html,body{
             }
             .lj-wrap3{
 			width:100%;
-			height:55rem;
+			height:100vh;
 			background:#efeff4;
 		}
 		.lj-header3{
@@ -292,12 +293,14 @@ html,body{
 		}
 		.lj-wrap1{
 			width:100%;
-			height:55rem;
+			height:100vh;
 		}
 		.lj-main1{
 			width:85%;
-			height:48.5rem;
-			margin:3rem auto;
+			height:100vh;
+			margin:0 auto;
+			padding-top: 3rem;
+			box-sizing:border-box;
 		}
 		.lj-main1>span{
 			display: block;
@@ -340,9 +343,22 @@ html,body{
            }
            
            .lj-a{
-				width:100% !important;
-	           	height:4rem !important;
+				width:40% !important;
+	           	height:3rem !important;
 	           	opacity:1 !important;
+	           	margin-right: 1rem;
+	           	float:left;
+           }
+           .lj-a1{
+				width:100% !important;
+	           	height:3rem !important;
+	           	opacity:1 !important;
+	           	margin-right: 1rem;
+	           	float:left;
+           }
+           .lj-a:last-child{
+           		margin:0;
+           		float: right;
            }
            .lj-black{
            	color: #000;
@@ -370,10 +386,17 @@ html,body{
            	color:#fff;
            	text-align: center;
            	line-height: 5rem;
-           	opacity:0;
            	border-radius:0.5rem;
 			position:fixed;
-           	bottom:0;
+           	bottom:0%;
            	left:10%;
            	opacity:0;
            }
+           #code{  
+	        font-family:Arial;  
+	        font-style:italic;  
+	        font-weight:bold;  
+	        border:0;  
+	        letter-spacing:2px;  
+	        color:blue;  
+	        }

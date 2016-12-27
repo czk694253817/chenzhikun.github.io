@@ -23,54 +23,78 @@
   </head>
   <body ng-app="surveyTimeApp">
     <!--[if lte IE 8]>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport" content="width=device-width">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css(.) styles/vendor.css -->
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="bower_components/summernote/dist/summernote.css" />
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/main.css -->
+		<link rel="stylesheet" href="styles/czk.css">
+		<link rel="stylesheet" href="styles/lj.css">
+		<link rel="stylesheet" href="styles/sts.css">
+		<link rel="stylesheet" href="styles/zjf.css">
+		<link rel="stylesheet" href="styles/zll.css">
+		<!-- endbuild -->
+	</head>
+
+	<body ng-app="surveyTimeApp">
+		<!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
- 
-    
-    <!-- Add your site or application content here -->
+
+		<!-- Add your site or application content here -->
 		<div ui-view></div>
-		
-			
-		
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			! function(A, n, g, u, l, a, r) {
+				A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+						(A[l].q = A[l].q || []).push(arguments)
+					}, A[l].l = +new Date, a = n.createElement(g),
+					r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+			}(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+			ga('create', 'UA-XXXXX-X');
+			ga('send', 'pageview');
+		</script>
+
+		<!-- build:js(.) scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/chart.js/dist/Chart.js"></script>
+		<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+		<script src="bower_components/summernote/dist/summernote.js"></script>
+		<script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid='';pophcol=2&amp;lang=zh"></script>
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/addons/bshareMM.js#shareClass=BSHARE_IMAGE_ALL"> </script>
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/czk.js"></script>
+		<script src="scripts/controllers/lj.js"></script>
+		<script src="scripts/controllers/sts.js"></script>
+		<script src="scripts/controllers/zjf.js"></script>
+		<script src="scripts/controllers/zll.js"></script>
 
 
-    </script>
+		<!-- endbuild -->
+	</body>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/chart.js/dist/Chart.js"></script>
-    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
-    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
-    <script src="bower_components/summernote/dist/summernote.js"></script>
-    <script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-          <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
-<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/fx.js"></script>
-        <script src="scripts/controllers/czk.js"></script>
-        <script src="scripts/controllers/lj.js"></script>
-        <script src="scripts/controllers/sts.js"></script>
-        <script src="scripts/controllers/zjf.js"></script>
-        <script src="scripts/controllers/zll.js"></script>
-    
-        <!-- endbuild -->
-</body>
 </html>

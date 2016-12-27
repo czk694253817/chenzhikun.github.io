@@ -210,7 +210,7 @@
 			</span>
 			<h1 class="lj-h1">SurveyTime</h1>
 			<div class="lj-content2">
-				<form novalidate name="oForm">
+			
 					<div class="lj-input2">
 						<span>用户名：</span>
 						<input type="text" placeholder="请输入用户名" ng-model="user"  ng-blur="userBlur()" ng-focus="userFocus()" class="{{className}}"/>
@@ -233,7 +233,8 @@
 		              
 		         
 					<input  ng-click="login()" ng-disabled="oForm.$invalid" value="登录" class="btn btn-info lj-a" type="submit" />
-				</form>
+					<input  ng-click="zhuce()" value="注册" class="btn btn-info lj-a" type="button" />
+			
 			</div>
 		</div>
 		<div class="lj-user-password">
