@@ -1,24 +1,28 @@
-
-<div class="y-yin" ng-if="ll" ng-click="xis()"></div>
-
-    <div class="z-shu">
-	<div class="z-zhu" ng-if="we">
-	<img src="images/hh.png"/>
-    <span>您还没有问卷</span>
-    </div>
-    <ul class="list-group" ng-if="as">
- <shuju  ng-repeat="x in data | offset:shu"></shuju>
-  <nav ng-if="zhu">
-  <ul class="pager">
-    <li ng-click="fn()"><a>Previous</a></li>
-    <li ng-click="fn2()"><a >Next</a></li>
-  </ul>
-</nav>
-</ul>
-
-<shujw></shujw>
-
-
+<div class="y-yin" ng-if="ll" ng-click="xis()">
 </div>
 
+<div class="z-shu">
+	<div class="z-zhu" ng-if="we">
+		<img src="images/hh.png" />
+		<span>您还没有问卷</span>
+		<p>
+			<a class="btn btn-primary btn-lg" ng-click="zp" role="button">Learn more</a>
+		</p>
+	</div>
+	<ul class="list-group" ng-if="as">
+		<shuju ng-repeat="x in data | offset:shu"></shuju>
 
+	</ul>
+	<nav ng-if="zhu">
+		<ul class="pager">
+			<li ng-click="fn()">
+				<a>Previous</a>
+			</li>
+			<li ng-click="fn2()">
+				<a>Next</a>
+			</li>
+		</ul>
+	</nav>
+	<shujw></shujw>
+	<div class="alertw">{{shj}}</div>
+</div>
