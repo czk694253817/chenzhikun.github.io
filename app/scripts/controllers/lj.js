@@ -52,7 +52,6 @@ angular.module('surveyTimeApp')
       
     }
     $scope.login=function(){
-      
       if(!$scope.user){
         $scope.className="lj-red"
         $scope.user="手机号不能为空"
@@ -92,18 +91,18 @@ angular.module('surveyTimeApp')
                 $cookies.remove("mypassword");
               }
           },function(reponse){
-              var ele1 = angular.element(".lj-user-password")
-              ele1.animate({"bottom":"40%","opacity":1},400,function(){
-                ele1.delay(1000).animate({"opacity":0});
-              });
+              var ele1 = angular.element(".lj-user-password");
+              ele1.css("bottom","0");
+              ele1.stop().animate({"bottom":"8%","opacity":"1"},400,function(){
+              ele1.delay(1000).animate({"opacity":"0"});
+          });
           })
       }
 
     }
-    $scope.coo=function(){
-      // console.log(angular.element(".lj_cook"));
+    $scope.zhuce=function(){
+      $state.go("zhuce");
     }
-    // alert(angular.element(".lj-search_pass_link1").attr("index"))
     
     $scope.zidong=function(){
       if(ele2.attr("index")=="false"){
@@ -172,7 +171,7 @@ angular.module('surveyTimeApp')
         }else{
           $scope.password="密码格式错误";
           $scope.className1="lj-red";
-          
+          angular.element(".lj-pas").attr("type","text");
         }
       }
              
@@ -181,6 +180,7 @@ angular.module('surveyTimeApp')
       if($scope.className1!="lj-black"){
         $scope.password="";
         $scope.className1="lj-black"
+        angular.element(".lj-pas").attr("type","password");
       }
     }
 
@@ -191,7 +191,7 @@ angular.module('surveyTimeApp')
         }else{
           $scope.password1="密码不一致";
           $scope.className2="lj-red";
-          
+          angular.element(".lj-pas1").attr("type","text");
         }
       }
              
@@ -200,6 +200,7 @@ angular.module('surveyTimeApp')
       if($scope.className2!="lj-black"){
         $scope.password1="";
         $scope.className2="lj-black"
+        angular.element(".lj-pas1").attr("type","password");
       }
     }
 
@@ -211,10 +212,12 @@ angular.module('surveyTimeApp')
       if(!$scope.password){
         $scope.password="密码不能为空"
         $scope.className1="lj-red";
+        angular.element(".lj-pas").attr("type","text");
       }else{
         if(!$scope.password1){
           $scope.password1="请再次输入密码"
           $scope.className2="lj-red";
+          angular.element(".lj-pas1").attr("type","text");
         }
       }
 
@@ -247,50 +250,21 @@ angular.module('surveyTimeApp')
 
 
   }])
-  .controller('zhuyemianCon', ["$scope","$http",function ($scope,$http) {
-  	
-  }]);
-// window.onload=function(){
-// 		changeImg()
+  .controller('resetCon', ["$scope","$http","$stateParams","url",function ($scope,$http,$stateParams,url) {
+    
+      $http({
+            method:"put",
+            url:url+"users/596d184e5cb5f8c5",
+            data:{"username":$scope.user,"password":$scope.password}
+            // headers:{'Content-Type':'application/x-www-form-urlencoded'}
+          }).then(function(reponse){
+              console.log(reponse)
+          },function(reponse){
+              console.log(reponse)
+  
+              
+          })
 
-// 		var code;//声明一个变量用于存储生成的验证码  
-//         document.getElementById("lj-code").onclick=changeImg;  
-//         function changeImg(){  
-//             //alert("换图片");  
-//             var arrays=new Array(  
-//                 '1','2','3','4','5','6','7','8','9','0',  
-//                 'a','b','c','d','e','f','g','h','i','j',  
-//                 'k','l','m','n','o','p','q','r','s','t',  
-//                 'u','v','w','x','y','z',  
-//                 'A','B','C','D','E','F','G','H','I','J',  
-//                 'K','L','M','N','O','P','Q','R','S','T',  
-//                 'U','V','W','X','Y','Z'               
-//             );  
-//             code='';//重新初始化验证码  
-//             //alert(arrays.length);  
-//             //随机从数组中获取四个元素组成验证码  
-//             for(var i=0;i<4;i++){  
-//             //随机获取一个数组的下标  
-//                 var r=parseInt(Math.random()*arrays.length);  
-//                 code+=arrays[r];  
-//                 //alert(arrays[r]);  
-//             }  
-//             //alert(code);  
-//             document.getElementById('lj-code').innerHTML=code;//将验证码写入指定区域  
-//         }         
-          
-//         //效验验证码(表单被提交时触发)  
-//         function check(){  
-//             //获取用户输入的验证码  
-//             var input_code=document.getElementById('lj-vcode').value;  
-//             //alert(input_code+"----"+code);  
-//             if(input_code.toLowerCase()==code.toLowerCase())  
-//             {  
-//                 //验证码正确(表单提交)  
-//                 return true;  
-//             }  
-//             alert("请输入正确的验证码!");  
-//             //验证码不正确,表单不允许提交  
-//             return false;  
-//         }
-// }
+  	     
+  }]);
+
