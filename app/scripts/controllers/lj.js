@@ -18,7 +18,7 @@ angular.module('surveyTimeApp')
     var ele2=angular.element(".lj-search_pass_link1")
     var ele3=angular.element(".lj-jizhu1")
     if($cookies.get("myuser")){
-      // $state.go("home",{"id":$cookies.get("myuid")});
+      $state.go("home",{"id":$cookies.get("myuid")});
       $scope.lijiang=true;
       ele2.attr("index","true")
     }
@@ -68,7 +68,8 @@ angular.module('surveyTimeApp')
             url:url+"users/login",
             data:{"username":$scope.user,"password":$scope.password}
           }).then(function(reponse){
-              $scope.uid=reponse.data.uid
+              $scope.uid=reponse.data.uid;
+              localStorage.user=$scope.user;
               $state.go("home",{"id":$scope.uid});
               if(ele2.attr("index")=="true"){
                 if(!$cookies.get("myuser")){
@@ -94,7 +95,7 @@ angular.module('surveyTimeApp')
               var ele1 = angular.element(".lj-user-password");
               ele1.css("bottom","0");
               ele1.stop().animate({"bottom":"8%","opacity":"1"},400,function(){
-              ele1.delay(1000).animate({"opacity":"0"});
+              ele1.delay(1000).animate({"opacity":"0","bottom":"0rem"});
           });
           })
       }
@@ -213,13 +214,13 @@ angular.module('surveyTimeApp')
         $scope.password="密码不能为空"
         $scope.className1="lj-red";
         angular.element(".lj-pas").attr("type","text");
-      }else{
-        if(!$scope.password1){
-          $scope.password1="请再次输入密码"
-          $scope.className2="lj-red";
-          angular.element(".lj-pas1").attr("type","text");
-        }
       }
+      if(!$scope.password1){
+        $scope.password1="请再次输入密码"
+        $scope.className2="lj-red";
+        angular.element(".lj-pas1").attr("type","text");
+      }
+      
 
         
       angular.element(".lj-hide").css("bottom","0");
@@ -240,7 +241,7 @@ angular.module('surveyTimeApp')
             
               var ele = angular.element(".lj-hide");
               ele.animate({"bottom":"14rem","opacity":1},400,function(){
-                ele.delay(1000).animate({"opacity":0});
+                ele.delay(1000).animate({"opacity":0,"bottom":"0rem"});
               });
   
               
@@ -251,20 +252,72 @@ angular.module('surveyTimeApp')
 
   }])
   .controller('resetCon', ["$scope","$http","$stateParams","url",function ($scope,$http,$stateParams,url) {
-    
-      $http({
-            method:"put",
-            url:url+"users/596d184e5cb5f8c5",
-            data:{"username":$scope.user,"password":$scope.password}
-            // headers:{'Content-Type':'application/x-www-form-urlencoded'}
-          }).then(function(reponse){
-              console.log(reponse)
-          },function(reponse){
-              console.log(reponse)
-  
-              
-          })
+    $scope.pasBlur=function(){
+      if($scope.password){
+        if($scope.password.length>6 && $scope.password.length<18){
+          
+        }else{
+          $scope.password="密码格式错误";
+          $scope.className1="lj-red";
+          angular.element(".lj-pas").attr("type","text");
+        }
+      }
+             
+    }
+    $scope.pasFocus=function(){      
+      if($scope.className1!="lj-black"){
+        $scope.password="";
+        $scope.className1="lj-black"
+        angular.element(".lj-pas").attr("type","password");
+      }
+    }
 
-  	     
+    $scope.pas1Blur=function(){
+      if($scope.password1){
+        if($scope.password1==$scope.password){
+          
+        }else{
+          $scope.password1="密码不一致";
+          $scope.className2="lj-red";
+          angular.element(".lj-pas1").attr("type","text");
+        }
+      }
+             
+    }
+    $scope.pas1Focus=function(){      
+      if($scope.className2!="lj-black"){
+        $scope.password1="";
+        $scope.className2="lj-black"
+        angular.element(".lj-pas1").attr("type","password");
+      }
+    }
+    $scope.tijiao=function(){
+      if(!$scope.password){
+        $scope.password="密码不能为空"
+        $scope.className1="lj-red";
+        angular.element(".lj-pas").attr("type","text");
+      }
+      if(!$scope.password1){
+        $scope.password1="请再次输入密码"
+        $scope.className2="lj-red";
+        angular.element(".lj-pas1").attr("type","text");
+      }
+      if($scope.password.length>6 && $scope.password.length<18 && $scope.password1==$scope.password){
+        $http({
+            method:"put",
+            url:url+"users/"+$stateParams.id,
+            data:{"username":localStorage.getItem("user"),"password":$scope.password}
+          }).then(function(reponse){
+              if(reponse.statusText=="OK"){
+                var ele4 = angular.element(".lj-xiugai");
+                ele4.animate({"bottom":"14rem","opacity":1},400,function(){
+                  ele4.delay(1000).animate({"opacity":0,"bottom":"0rem"});
+                });
+              }
+          },function(){})
+      }
+      
+    }
+        
   }]);
 

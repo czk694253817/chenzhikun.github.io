@@ -8,9 +8,12 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('zllCon', ["$scope", "$http", "url", "$state", "$stateParams", function($scope, $http, url, $state, $stateParams) {
+	.controller('zllCon', ["$scope", "$http", "url", "$state", "$stateParams", "$rootScope", function($scope, $http, url, $state, $stateParams, $rootScope) {
 		// $rootScope.aa=$stateParams.id;
 		// $rootScope.uid = $stateParams.id;
+		// $rootScope.num = 1;
+		$scope.$emit("toparent",1);
+		$rootScope.navindex = 1;
 		$scope.id = $stateParams.id;
 		console.log($stateParams.id);
 		$scope.ll = false;
