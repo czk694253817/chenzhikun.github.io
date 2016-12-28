@@ -11,6 +11,7 @@ angular.module('surveyTimeApp')
 	.controller('zllCon', ["$scope", "$http", "url", "$state", "$stateParams", function($scope, $http, url, $state, $stateParams) {
 		// $rootScope.aa=$stateParams.id;
 		// $rootScope.uid = $stateParams.id;
+		alert();
 		$scope.id = $stateParams.id;
 		console.log($stateParams.id);
 		$scope.ll = false;

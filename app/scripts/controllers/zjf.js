@@ -11,13 +11,32 @@
 var title = '', uid = '', option = [];
 angular.module('surveyTimeApp')
 .controller('zjfCon', ["$scope","$http","url",function($scope,$http,url){
+  $scope.options = {
+    height: 100,
+    focus: true,
+    // airMode: true,
+    toolbar: [
+            ['edit',[]],
+            ['headline', []],
+            ['style', ['bold','clear']],
+            ['fontface', []],
+            ['textsize', ['fontsize']],
+            ['fontclr', ['color']],
+            ['alignment', []],
+            ['height', []],
+            ['table', []],
+            ['insert', ['picture']],
+            ['view', []]
+        ]
+  };
+
 	$scope.opindex = 0;
 	$scope.zjfArr = null;
 	$scope.$on('to-parent', function(event,data) {
 		console.log(data);
 		$scope.zjfArr = data;
 	});
-
+	$scope.changeBool = true;
 	$scope.zjfdata = {
 		id:"6c4087e8acf439b7",
 		title:"你想不想学习？",
@@ -61,21 +80,21 @@ angular.module('surveyTimeApp')
 	}
   // $http({
   // 	method: "get",
-  // 	url: url + 'item/' + 'd187e8bbad9cc871'
+  // 	url: url + 'item/' + '09e7d87e00bcf8db'
   // }).then(function(e){
   	$scope.index1 = 0;
   	$scope.index2 = 0;
   	$scope.index3 = 0;
-  	// $scope.maxIndex = e.data.option.length;
-  	// for(var i=0; i<e.data.option.length; i++){
-  	// 	if(e.data.option[i].type == 0){
-  	// 		$scope.index1 ++;
-  	// 	}else if(e.data.option[i].type == 1){
-  	// 		$scope.index2 ++;
-  	// 	}else if(e.data.option[i].type == 2){
-  	// 		$scope.index3 ++;
-  	// 	}
-  	// }
+  // 	$scope.maxIndex = e.data.option.length;
+  // 	for(var i=0; i<e.data.option.length; i++){
+  // 		if(e.data.option[i].type == 0){
+  // 			$scope.index1 ++;
+  // 		}else if(e.data.option[i].type == 1){
+  // 			$scope.index2 ++;
+  // 		}else if(e.data.option[i].type == 2){
+  // 			$scope.index3 ++;
+  // 		}
+  // 	}
   	
   	$scope.maxIndex = $scope.zjfdata.option.length;
   	for(var i=0; i<$scope.zjfdata.option.length; i++){
@@ -87,13 +106,17 @@ angular.module('surveyTimeApp')
   			$scope.index3 ++;
   		}
   	}
+  	// alert($scope.index1 + $scope.index2 + $scope.index3);
   	// $scope.zjfdata = e.data;
   	$scope.changeQes = function(){
   		if($scope.zjfArr == null){
-  			if(!angular.element(".zjfWain").is(":animated")){
+  			if($scope.changeBool == true){
+  				$scope.changeBool = false;
   				angular.element(".zjfWain").css("bottom",0).css("opacity",1);
-	 				angular.element(".zjfWain").stop().animate({"bottom":"5rem"},300,function(){
-	 					angular.element(".zjfWain").delay(600).animate({"opacity":0});
+	 				angular.element(".zjfWain").animate({"bottom":"5rem"},300,function(){
+	 					angular.element(".zjfWain").delay(600).animate({"opacity":0},function(){
+	 						$scope.changeBool = true;
+	 					});
 	 				})
 	 			}
   		}else{
@@ -116,7 +139,6 @@ angular.module('surveyTimeApp')
   				}else if($scope.zjfArr[0].type == 3){
 
   				}
-  				// if()
   			}else if($scope.opindex == $scope.maxIndex -1){
   				angular.element(".questionaire_submit").text("提交问卷");
   				alert();
@@ -124,6 +146,8 @@ angular.module('surveyTimeApp')
   		}
   		
   	}
+
+  	
   // },function(){alert("error!");})
 
 	
@@ -212,7 +236,7 @@ angular.module('surveyTimeApp')
 .directive("zjfoptionone",function(){
 	return {
 		restrict: "EACM",
-		scope: {"zjfdataone":"=zjfd"},
+		scope: {"zjfdataone":"=zjfd","options":"=options"},
 		template: function(ele,attrs){	
 			if(attrs.type == 0){
 				return '<div class="questionaire_question"><div class="question_title">{{zjfdataone.title | addqstmark}}</div><div class="zjf_options"><div ng-repeat="opo in zjfdataone.opt" class="opts"><span class="zjf_state" ng-class="{zjf_bgactive:$index == i}" ng-click="changeState($index)"></span><span class="optCont" ng-class="{zjf_colactive:$index == i}">{{opo.op}}</span><div></div>';
@@ -221,9 +245,8 @@ angular.module('surveyTimeApp')
 			}else if(attrs.type == 2){ 
 				return '<div class="questionaire_question"><div class="question_title">{{zjfdataone.title | addqstmark}}</div><div class="zjf_options"><input type="text" class="form-control formpos" placeholder="请填写答案" ng-blur="addFill()"></div></div>';
 			}else if(attrs.type == 3){
-				return '<div class="questionaire_question"><div class="question_title">{{zjfdataone.title | addqstmark}}</div><div class="zjf_options"><textarea class="form-control zjfArea" rows="5" style="resize:none;" ng-blur="addArea()"></textarea></div></div>';
+				return '<div class="questionaire_question"><div class="question_title">{{zjfdataone.title | addqstmark}}</div><div class="zjf_options"><summernote config="options"></summernote></div></div>';
 			}
-
 		},
 		link: function(scope,ele,attrs){
 			var obj = scope.zjfdataone;

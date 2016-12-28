@@ -7,11 +7,11 @@
 		<h1>问卷调查</h1>
 		<h2>{{zjfdata.title | addqstmark}}</h2>
 	</div>
-	<div class="all_question">
+		<div class="all_question">
 		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:0" type="0" zjfd="key" ng-show="opindex == $index"></zjfoptionone>
 		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:1" type="1" zjfd="key" ng-show="opindex == $index + index1"></zjfoptionone>
 		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:2" type="2" zjfd="key" ng-show="opindex == $index + index1 + index2"></zjfoptionone>
-		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:3" type="3" zjfd="key" ng-show="opindex == $index + index1 + index2 +index3"></zjfoptionone>
+		<zjfoptionone ng-repeat="key in zjfdata.option | pgmType:3" type="3" zjfd="key" ng-show="opindex == $index + index1 + index2 +index3" options="options"></zjfoptionone>
 	<!-- <zjfoptionone style="position:absolute;" ng-repeat="key in zjfdata.option" zjfd="key" zjftype="{{key.type}}" proindex="{{$index}}" ng-show="$index==opindex"></zjfoptionone> -->
 	
 	<!-- <div class="questionaire_question" ng-repeat="key in zjfdata.option" zjftype="{{key.type}}"> -->

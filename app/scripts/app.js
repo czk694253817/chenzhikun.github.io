@@ -9,7 +9,7 @@
   * 
   * Main module of the application. 
   */ 
- angular.module('surveyTimeApp', ["ui.router","chart.js","ngCookies"]) 
+ angular.module('surveyTimeApp', ["ui.router","chart.js","ngCookies","summernote"]) 
  .constant("url","http://47.90.20.200:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
  $urlRouterProvider.when("","/home")

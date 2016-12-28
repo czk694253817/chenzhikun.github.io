@@ -21,6 +21,7 @@ angular.module('surveyTimeApp')
 		$rootScope.opend=[];
 		// $rootScope.aa=$stateParams.id;
 		// console.log(,"")
+
 		$scope.sts_fo=function(index){
 			if(index==2){
 				angular.element(".sts_fo").eq(index).addClass("sts_color").siblings().removeClass("sts_color");
