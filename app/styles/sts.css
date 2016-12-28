@@ -412,7 +412,14 @@
 	margin: 0 auto 0.5rem;
 	border-radius: 5px;
 }
-
+.sts_wj{
+	width: 80%;
+	margin-left: 10%;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1.2rem;
+	color: red;
+}
 
 
 

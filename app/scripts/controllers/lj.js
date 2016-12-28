@@ -251,19 +251,18 @@ angular.module('surveyTimeApp')
 
   }])
   .controller('resetCon', ["$scope","$http","$stateParams","url",function ($scope,$http,$stateParams,url) {
-    
-      $http({
-            method:"put",
-            url:url+"users/596d184e5cb5f8c5",
-            data:{"username":$scope.user,"password":$scope.password}
-            // headers:{'Content-Type':'application/x-www-form-urlencoded'}
-          }).then(function(reponse){
-              console.log(reponse)
-          },function(reponse){
-              console.log(reponse)
+      // $http({
+      //       method:"put",
+      //       url:url+"users/596d184e5cb5f8c5",
+      //       data:{"username":$scope.user,"password":$scope.password}
+      //       // headers:{'Content-Type':'application/x-www-form-urlencoded'}
+      //     }).then(function(reponse){
+      //         console.log(reponse)
+      //     },function(reponse){
+      //         console.log(reponse)
   
               
-          })
+      //     })
 
   	     
   }]);
