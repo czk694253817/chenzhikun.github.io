@@ -9,11 +9,15 @@
  */
 angular.module('surveyTimeApp')
 	.controller('stsCon',['$scope',"$window","$rootScope","$state","$stateParams",function ($scope,$rootScope,$window,$state,$stateParams) {
-		// $scope.$window=$window;
-		/**/
-		// $scope.ret=function(){
-		// 	window.location.go(-1)
-		// }
+		var uid = $stateParams.id;
+		var i = 0;
+		$scope.num = 0;
+		$scope.$on("toparent",function(event,data){
+			$scope.num = data;
+			$rootScope.navindex = data;
+		});
+	
+		
 		$scope.fix=true;
 		$scope.s_type=0;
 		$scope.sts_sqq=true;
@@ -22,32 +26,38 @@ angular.module('surveyTimeApp')
 		// $rootScope.aa=$stateParams.id;
 		// console.log(,"")
 
-		$scope.sts_fo=function(index){
-			if(index==2){
-				angular.element(".sts_fo").eq(index).addClass("sts_color").siblings().removeClass("sts_color");
-				$scope.fix=false;
-			}else{
-				angular.element(".sts_fo").eq(index).addClass("sts_color").siblings().removeClass("sts_color");
-			}			
+		$scope.sts_fo=function(){
+			i = $rootScope.navindex;
+			$scope.num = 2;
+			$rootScope.navindex = 2;
+			$scope.fix=false;
 		}
 
 		/*设置*/
 		$scope.hid=function(){
 			$scope.fix=true;
-		}
+			$scope.num = i;
+		}	
 
 		$scope.tui=function(){
 			$scope.fix=true;
-			$state.go("home.login")
+			localStorage.removeItem("user")
+			if($cookies.get("myuser")){
+		      $cookies.remove("myuser");
+		      $cookies.remove("myuid");
+		    }
+			$state.go("home.login");
 		}
 
 		$scope.sts_xg=function(){
 			$scope.fix=true;
-			$state.go("reset")
+			$state.go("reset",{"id":uid});
 		}
 		
   }])
 	.controller('news',['$scope',"$rootScope","$state","mySer",function ($scope,$rootScope,$state,mySer) {
+		$scope.$emit("toparent",0);
+		$rootScope.navindex = 0;
 		$scope.arr=[{"a":"选项名称"},{"a":"选项名称"}];
 		$rootScope.arr=$scope.arr;
 		$scope.sar=["单选题","多选题","填空题","简答题"];
@@ -66,15 +76,23 @@ angular.module('surveyTimeApp')
 		
   }])
 	.controller('topic',['$scope','$rootScope','http','mySer','$stateParams','url','$state',function ($scope,$rootScope,http,mySer,$stateParams,url,$state) {
+    	$scope.sts_wj=false
     	$scope.bb=function(){
 
-    		// mySer.stsobj.push({"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id})
-    		// console.log(mySer.stsobj)
+		if($rootScope.ststitle==""||$rootScope.ststitle==undefined){
+    		$scope.sts_wj=true;
+    	}else{
+    		$scope.sts_wj=false;
     		http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id},function(e){
-    			$scope.data=e;
+    			mySer.boss=[];
+    			$rootScope.ststitle="";
+    			console.log(e)
     			$state.go("home.lists")
     		})
+    		}
     	}
+
+    	
   }])
 	.controller('dx',['$scope','$rootScope','$state','mySer',function ($scope,$rootScope,$state,mySer) {
     	$scope.arr=[{"op":"选项名称"},{"op":"选项名称"}];
@@ -160,7 +178,7 @@ angular.module('surveyTimeApp')
     				
     			}
 	    		// $rootScope.boss=$scope.boss;
-	    		console.log(mySer.boss);
+	    		// console.log(mySer.boss);
 	    		$state.go("home.topic.ststotk");
 	    		
 	    		// $rootScope.opend.push({"option":$scope.boss})

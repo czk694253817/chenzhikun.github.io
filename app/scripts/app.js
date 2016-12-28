@@ -76,7 +76,7 @@
       templateUrl:"views/questionaire.html",
       controller:"zjfCon"
     }).state("reset",{
-      url:"/reset",
+      url:"/reset/:id",
       templateUrl:"views/reset.html",
       controller:"resetCon"
     })
