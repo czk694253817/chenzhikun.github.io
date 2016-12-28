@@ -24,7 +24,7 @@ angular.module('surveyTimeApp')
 			method: 'get',
 			url: url + 'item/',
 			params: {
-				uid: 'cdefcdc48ec159c5'
+				uid: $scope.id
 			}
 		}).then(function(e) {
 			console.log(e)
