@@ -8,7 +8,7 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-	.controller('stsCon',['$scope',"$window","$rootScope","$state","$stateParams",function ($scope,$rootScope,$window,$state,$stateParams) {
+	.controller('stsCon',['$scope',"$window","$rootScope","$state","$stateParams","$cookies",function ($scope,$rootScope,$window,$state,$stateParams,$cookies) {
 		var uid = $stateParams.id;
 		var i = 0;
 		$scope.num = 0;
@@ -46,7 +46,7 @@ angular.module('surveyTimeApp')
 		      $cookies.remove("myuser");
 		      $cookies.remove("myuid");
 		    }
-			$state.go("home.login");
+			$state.go("login");
 		}
 
 		$scope.sts_xg=function(){
@@ -76,17 +76,22 @@ angular.module('surveyTimeApp')
 		
   }])
 	.controller('topic',['$scope','$rootScope','http','mySer','$stateParams','url','$state',function ($scope,$rootScope,http,mySer,$stateParams,url,$state) {
-    	$scope.sts_wj=false
+    	$scope.sts_wj=false;
+    	$scope.sts_wt=false;
     	$scope.bb=function(){
 
 		if($rootScope.ststitle==""||$rootScope.ststitle==undefined){
     		$scope.sts_wj=true;
+    	}else if(mySer.wjtitle.length==0||mySer.boss.length==0){
+    		$scope.sts_wt=true;
     	}else{
     		$scope.sts_wj=false;
-    		http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id},function(e){
+    		$scope.sts_wt=false;
+    			http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id},function(e){
     			mySer.boss=[];
+    			mySer.wjtitle=[];
     			$rootScope.ststitle="";
-    			console.log(e)
+    			console.log(mySer.boss,mySer.wjtitle,$scope.sts_wt)
     			$state.go("home.lists")
     		})
     		}
