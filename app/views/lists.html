@@ -5,24 +5,18 @@
 	<div class="z-zhu" ng-if="we">
 		<img src="images/hh.png" />
 		<span>您还没有问卷</span>
-		<p>
-			<a class="btn btn-primary btn-lg" ng-click="zp" role="button">Learn more</a>
-		</p>
 	</div>
 	<ul class="list-group" ng-if="as">
-		<shuju ng-repeat="x in data | offset:shu"></shuju>
+	<shuju ng-repeat="x in data |f:page:6"></shuju>
 
 	</ul>
 	<nav ng-if="zhu">
-		<ul class="pager">
-			<li ng-click="fn()">
-				<a>Previous</a>
-			</li>
-			<li ng-click="fn2()">
-				<a>Next</a>
-			</li>
-		</ul>
-	</nav>
+  <ul class="pagination">
+    <li><a  ng-click="kl()">&laquo;</a></li>
+    <li ng-repeat="x in arr"><a ng-click="pages($index)">{{$index+1}}</a></li>
+    <li><a  ng-click="kl2()">&raquo;</a></li>
+  </ul>
+</nav>
 	<shujw></shujw>
 	<div class="alertw">{{shj}}</div>
 </div>
