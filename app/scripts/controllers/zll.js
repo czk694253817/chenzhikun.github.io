@@ -140,7 +140,7 @@ angular.module('surveyTimeApp')
 	}]).directive('shuju', function() { //自定义指令
 		return {
 			restrict: 'EACM', //仅限元素名调用
-			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"  ng-click="xq(x.id)" ><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p" ><img src="images/z-yx.png"/><span>预览</span></div><div class="zk-p"  ng-click="xq(x.id)" ><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
 			link: function(scope, ele, attr) {
 				scope.xw = function() {
 					ele.find(".z-d").slideToggle(200);
