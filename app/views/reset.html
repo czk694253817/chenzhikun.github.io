@@ -7,6 +7,7 @@
 <body>
 	<div class="lj-wrap3">
 		<header class="lj-header3">
+			<span>返回</span>
 			<span ui-sref="home.lists">返回</span>
 			<span>修改密码</span>
 		</header>
@@ -32,6 +33,7 @@
 			</form>
 			
 		</div>
+		<input  ng-click="zhuce()" ng-disabled="oForm.$invalid" value="提交" class="btn btn-info lj-a1" type="submit"/>
 		<input  ng-click="tijiao()" ng-disabled="oForm.$invalid" value="提交" class="btn btn-info lj-a1" type="submit"/>
 		<div class="lj-xiugai">修改密码成功！</div>
 	</div>
