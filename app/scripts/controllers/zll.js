@@ -25,7 +25,7 @@ angular.module('surveyTimeApp')
 			method: 'get',
 			url: url + 'item/',
 			params: {
-				uid: 'cdefcdc48ec159c5'
+				uid: $scope.id
 			}
 		}).then(function(e) {
 			if(e.data == '' || e.data == 'null' || e.data.length == 0) {
@@ -114,7 +114,6 @@ angular.module('surveyTimeApp')
 			}
 		}
 		$scope.kl2 = function() {
-			alert();
 			if($scope.data.length / 6 <= $scope.page+1) {
 				angular.element(".alertw").css('bottom', '0')
 				angular.element(".alertw").stop().animate({
@@ -144,7 +143,6 @@ angular.module('surveyTimeApp')
 			link: function(scope, ele, attr) {
 				scope.xw = function() {
 					ele.find(".z-d").slideToggle(200);
-					scope.page=scope.page
 				}
 			}
 		}

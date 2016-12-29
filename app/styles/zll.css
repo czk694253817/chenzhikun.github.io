@@ -198,7 +198,8 @@ margin-top: 1.4rem;
 	.pagination {
     display: inline-block;
     padding-left: 0;
-    margin: 20px 90px;
+    margin: 20px 0;
+    margin-left: 90px;
     border-radius: 4px;
 }
 /*-webkit-animation:animation1 .5s ease-out  backwards;}
