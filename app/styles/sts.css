@@ -370,6 +370,9 @@
 	font-size: 1.3rem;
 	text-indent: 1.3rem;
 	background: #ccc;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 .sts_to>p>samp{
 	display: block;
