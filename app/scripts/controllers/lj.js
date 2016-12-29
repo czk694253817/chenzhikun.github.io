@@ -63,7 +63,6 @@ angular.module('surveyTimeApp')
         
       }
       if($scope.user.match(/^[1][34578](\d{9})$/)){
-        console.log($scope.password)
         $http({
             method:"post",
             url:url+"users/login",
@@ -316,7 +315,6 @@ angular.module('surveyTimeApp')
             url:url+"users/"+localStorage.getItem("uid"),
             data:{"username":localStorage.getItem("id"),"password":$scope.password}
           }).then(function(reponse){
-            console.log(reponse)
               if(reponse.status==200){
                 // var expireDate = new Date();
                 // expireDate.setDate(expireDate.getDate() + 7);
