@@ -20,7 +20,7 @@
 				display: flex;
 				position: fixed;
 				top: 0;
-				/*z-index: 9;*/
+				z-index: 8;
 				background: #9BD8FC;
 			}
 			.s-header>.left{
@@ -389,7 +389,7 @@
 	background: #000;
 	z-index: 10;
 	position: fixed;
-	top: 0;
+	bottom: 100vh;
 	left: 0;
 }
 .sts_fix{
@@ -414,6 +414,7 @@
 	background: #2babf4;
 	margin: 0 auto 0.5rem;
 	border-radius: 5px;
+	color: #fff;
 }
 .sts_wj{
 	width: 80%;
@@ -424,6 +425,19 @@
 	color: red;
 }
 
-
+.stsalertw{
+				width:80%;
+				height: 3rem;
+				background:rgba(0,0,0,.8);
+				position: fixed;
+				bottom:0;
+				left:10%;
+				color: #FFFFFF;
+				text-align: center;
+				font-size: 1.3rem;
+				line-height: 3rem;
+				border-radius: 0.4rem;
+				opacity:0;
+		}
 
 

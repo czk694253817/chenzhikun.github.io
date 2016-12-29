@@ -18,7 +18,7 @@ angular.module('surveyTimeApp')
     var ele2=angular.element(".lj-search_pass_link1")
     var ele3=angular.element(".lj-jizhu1")
     if($cookies.get("myuser")){
-      $state.go("home",{"id":$cookies.get("myuid")});
+      $state.go("home");
       $scope.lijiang=true;
       ele2.attr("index","true")
     }
@@ -70,17 +70,17 @@ angular.module('surveyTimeApp')
           }).then(function(reponse){
               $scope.uid=reponse.data.uid;
               localStorage.user=$scope.user;
-              $state.go("home",{"id":$scope.uid});
+              localStorage.uid=reponse.data.uid;
+              localStorage.id=reponse.data.id;
+              $state.go("home.lists");
               if(ele2.attr("index")=="true"){
                 if(!$cookies.get("myuser")){
                   var expireDate = new Date();
                   expireDate.setDate(expireDate.getDate() + 7);
                   $cookies.put("myuser",$scope.user,{expires:expireDate})
-                  $cookies.put("myuid",$scope.uid,{expires:expireDate})
                 }
               }else{
                 $cookies.remove("myuser");
-                $cookies.remove("myuid");
               }
               if(ele3.attr("index")=="true"){
                 var expireDate = new Date();
@@ -142,7 +142,14 @@ angular.module('surveyTimeApp')
         $scope.lijiang1=false
       }
     }
-  	
+  	$scope.yan=function(){
+      if(angular.element(".lj-passwords").attr("type")=="text"){
+        angular.element(".lj-passwords").attr("type","password");
+      }else{
+        angular.element(".lj-passwords").attr("type","text");
+      }
+     
+    }
   }])
 
   .controller('zhuceCon',  ["$scope","$http","url","$timeout","$location","$state","$rootScope",function ($scope,$http,url,$timeout,$location,$state,$rootScope) {
@@ -251,7 +258,7 @@ angular.module('surveyTimeApp')
 
 
   }])
-  .controller('resetCon', ["$scope","$http","$stateParams","url",function ($scope,$http,$stateParams,url) {
+  .controller('resetCon', ["$scope","$http","url",function ($scope,$http,url) {
     $scope.pasBlur=function(){
       if($scope.password){
         if($scope.password.length>6 && $scope.password.length<18){
@@ -305,10 +312,13 @@ angular.module('surveyTimeApp')
       if($scope.password.length>6 && $scope.password.length<18 && $scope.password1==$scope.password){
         $http({
             method:"put",
-            url:url+"users/"+$stateParams.id,
-            data:{"username":localStorage.getItem("user"),"password":$scope.password}
+            url:url+"users/"+localStorage.getItem("uid"),
+            data:{"username":localStorage.getItem("id"),"password":$scope.password}
           }).then(function(reponse){
-              if(reponse.statusText=="OK"){
+              if(reponse.status==200){
+                // var expireDate = new Date();
+                // expireDate.setDate(expireDate.getDate() + 7);
+                // $cookies.put("mypassword",$scope.password,{expires:expireDate})
                 var ele4 = angular.element(".lj-xiugai");
                 ele4.animate({"bottom":"14rem","opacity":1},400,function(){
                   ele4.delay(1000).animate({"opacity":0,"bottom":"0rem"});
