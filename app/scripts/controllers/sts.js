@@ -31,6 +31,15 @@ angular.module('surveyTimeApp')
 			$scope.num = 2;
 			$rootScope.navindex = 2;
 			$scope.fix=false;
+			angular.element(".sts_fix").css('bottom', '-30rem')
+				angular.element(".sts_fix").stop().animate({
+					"bottom": "7rem"
+				}, 1000);
+			angular.element(".sts_fixed").css('top', '-100%')
+				angular.element(".sts_fixed").stop().animate({
+					"top": "0%"
+				}, 300);	
+				
 		}
 
 		/*设置*/
@@ -41,7 +50,7 @@ angular.module('surveyTimeApp')
 
 		$scope.tui=function(){
 			$scope.fix=true;
-			localStorage.removeItem("user")
+			localStorage.clear();
 			if($cookies.get("myuser")){
 		      $cookies.remove("myuser");
 		      $cookies.remove("myuid");
@@ -76,6 +85,7 @@ angular.module('surveyTimeApp')
 		
   }])
 	.controller('topic',['$scope','$rootScope','http','mySer','$stateParams','url','$state',function ($scope,$rootScope,http,mySer,$stateParams,url,$state) {
+    	$rootScope.stshj=$scope.stshj;
     	$scope.sts_wj=false;
     	$scope.sts_wt=false;
     	$scope.bb=function(){
@@ -87,7 +97,7 @@ angular.module('surveyTimeApp')
     	}else{
     		$scope.sts_wj=false;
     		$scope.sts_wt=false;
-    			http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":$stateParams.id},function(e){
+    			http.post(url+"item",{"option":mySer.boss,"title":$rootScope.ststitle,"uid":localStorage.uid},function(e){
     			mySer.boss=[];
     			mySer.wjtitle=[];
     			$rootScope.ststitle="";
@@ -182,24 +192,27 @@ angular.module('surveyTimeApp')
     				mySer.boss.push({"title":$scope.titl,"type":$scope.s_type,"oop":[],"opt":[]})
     				
     			}
-	    		// $rootScope.boss=$scope.boss;
-	    		// console.log(mySer.boss);
+	    		
 	    		$state.go("home.topic.ststotk");
 	    		
-	    		// $rootScope.opend.push({"option":$scope.boss})
     		}
     	}
 
   }])
 	.controller('ststotk',['$scope','$rootScope','$state','mySer',function ($scope,$rootScope,$state,mySer) {
     	$scope.sts_arr=mySer.wjtitle
-    	// alert($scope.sts_arr)
-    	// alert(mySer.wjtitle);
     	$scope.sts_shan=function(index){ 		
-    		// alert(index)
-    		// angular.element(".sts_to").eq(index).remove();
     		mySer.wjtitle.splice(index,1)
-    		// console.log(mySer.stsobj)
+    		angular.element(".stsalertw").css('bottom', '0')
+				angular.element(".stsalertw").stop().animate({
+					"bottom": "18%",
+					"opacity": 1
+				}, 600, function() {
+				angular.element(".stsalertw").delay(1000).animate({
+						"opacity": 0
+					});
+				})
+				$rootScope.stshj = '删除成功';
     	}
 
   }])
