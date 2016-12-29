@@ -110,7 +110,8 @@ margin-top: 1.4rem;
 		.pager{
 			float: left;
 			margin-top: 2rem;
-			margin-left: 7rem;
+			    margin: 79px 0;
+			    margin-left: 7.5rem;
 		}
 		.zk-p img{
 			width:2.4rem;
@@ -199,11 +200,6 @@ margin-top: 1.4rem;
     display: inline-block;
     padding-left: 0;
     margin: 20px 0;
-    margin-left: 90px;
+    margin-left: 25%;
     border-radius: 4px;
 }
-/*-webkit-animation:animation1 .5s ease-out  backwards;}
-@-webkit-keyframes animation1{
-    0%{-webkit-transform:translate(0,50px); opacity:0;}
-    100%{-webkit-transform:translate(0,0px); opacity:1;}
-}*/
