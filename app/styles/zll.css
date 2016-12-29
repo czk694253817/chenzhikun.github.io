@@ -102,7 +102,7 @@ margin-top: 1.4rem;
 }
 
 		.zk-p{
-		width:33.3%;
+		width:24.3%;
 		height: 4.6rem;
 		float: left;
 		margin-top: .6rem;
@@ -193,6 +193,15 @@ margin-top: 1.4rem;
 				border-radius: 0.4rem;
 				opacity:0;
 		}
+		
+		
+	.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    margin-left: 90px;
+    border-radius: 4px;
+}
 /*-webkit-animation:animation1 .5s ease-out  backwards;}
 @-webkit-keyframes animation1{
     0%{-webkit-transform:translate(0,50px); opacity:0;}

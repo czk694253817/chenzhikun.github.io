@@ -25,7 +25,7 @@ angular.module('surveyTimeApp')
 			method: 'get',
 			url: url + 'item/',
 			params: {
-				uid: 'cdefcdc48ec159c5'
+				uid: $scope.id
 			}
 		}).then(function(e) {
 			if(e.data == '' || e.data == 'null' || e.data.length == 0) {
@@ -44,34 +44,20 @@ angular.module('surveyTimeApp')
 			}
 			$scope.data = e.data;
 			console.log($scope.data)
-		}, function() { /*$state.go('404')*/ })
-		$scope.kl2 = function() {
-			if($scope.data.length / 6 <= $scope.page+1) {
-				angular.element(".alertw").css('bottom', '0')
-				angular.element(".alertw").stop().animate({
-					"bottom": "18%",
-					"opacity": 1
-				}, 600, function() {
-			angular.element(".alertw").delay(1000).animate({
-						"opacity": 0
-					});
-				})
-				$scope.shj = '已是最后一页';
-				$scope.page = $scope.page
-			} else {
-				$scope.page++
-			}
-		}
+		}, function() { /*$state.go('404')*/ });
 		$scope.zp = function() {
 				$state.go('home.news')
 		}
+		
 		$scope.$watch('data', function() {
-			$scope.arr = []
-  for(var i = 0; i < $scope.data.length / 6; i++) {
+			if($scope.data!=undefined){
+			$scope.arr = [];
+  			for(var i = 0; i < $scope.data.length / 6; i++) {
 				$scope.arr.push(i)
 			}
 			if($scope.page !== 0) {
 				$scope.page = Math.ceil($scope.arr.length / 6)
+			}
 			}
 		},true)
 		$scope.pages = function(e) {
@@ -127,6 +113,23 @@ angular.module('surveyTimeApp')
 				$scope.page = 0
 			}
 		}
+		$scope.kl2 = function() {
+			if($scope.data.length / 6 <= $scope.page+1) {
+				angular.element(".alertw").css('bottom', '0')
+				angular.element(".alertw").stop().animate({
+					"bottom": "18%",
+					"opacity": 1
+				}, 600, function() {
+			angular.element(".alertw").delay(1000).animate({
+						"opacity": 0
+					});
+				})
+				$scope.shj = '已是最后一页';
+				$scope.page = $scope.page
+			} else {
+				$scope.page++
+			}
+		}
 		$scope.xq = function(n) {
 			console.log(n)
 			$state.go('home.results', {
@@ -136,19 +139,21 @@ angular.module('surveyTimeApp')
 	}]).directive('shuju', function() { //自定义指令
 		return {
 			restrict: 'EACM', //仅限元素名调用
-			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"  ng-click="xq(x.id)" ><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p" ><img src="images/z-yx.png"/><span>预览</span></div><div class="zk-p"  ng-click="xq(x.id)" ><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
 			link: function(scope, ele, attr) {
 				scope.xw = function() {
 					ele.find(".z-d").slideToggle(200);
-					scope.page=scope.page
 				}
 			}
 		}
 	}).filter("f", function() {
 	return function(input, page, siez) {
+		if(input!=''||input!=null){
 		var start = page * siez
 		var end = (page + 1) * siez
-		return input.slice(start, end)
+		return input.slice(start, end)	
+		}
+		
 	}
 }).directive('shujw', function() { //自定义指令
 		return {
