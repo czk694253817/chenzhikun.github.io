@@ -59,14 +59,20 @@ $scope.$on("oopOne",function(event,data){
       	}else if(a.type==1){
       		return '<div><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（多选题）</span></p><p class="nei2"><div class="czkbox"><canvas class="chart chart-bar" chart-data="data.chartData" chart-labels="data.labels"" chart-series="[]" chart-click="onClick"></canvas></div></p></div>';
       	}else if(a.type==2){
-      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（填空题）</span></p><p class="nei2">{{data.oop[0]}}<p><span class="nei" ng-click="add()">【显示全部】</span></p></div>';
+      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（填空题）</span></p><p class="nei2">{{data.oop[0]}}<p><span class="nei" ng-click="add()" ng-show="aa">【显示全部】</span></p></div>';
       	}else if(a.type==3){
-      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（简答题）</span></p><p class="nei2">{{data.oop[0]}}</p><p><span class="nei" ng-click="add()">【显示全部】</span></p></div>';
+      		return '<div class="czkti"><p class="czkwt"><span>{{czkindex+1}}.</span>{{data.title}}<span>（简答题）</span></p><p class="nei2">{{data.oop[0]}}</p><p><span class="nei" ng-click="add()" ng-show="aa">【显示全部】</span></p></div>';
       	};
       },
       link:function(s,a){
+        var len = s.data.oop.length;
           s.add=function(){
             s.$emit("oopOne",s.data.oop);
+          }
+          if(len!=0){
+              s.aa=true;
+          }else{
+              s.aa=false;
           }
       },
       replace:true
