@@ -16,8 +16,7 @@
   $stateProvider.state("home",{ 
     url:"/home", 
        templateUrl:'views/home.html', 
-       controller:"stsCon",
-       params:{id:null}
+       controller:"stsCon"
      }).state("home.news",{ 
     url:"/news", 
        templateUrl:'views/news.html', 
