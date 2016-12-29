@@ -44,34 +44,20 @@ angular.module('surveyTimeApp')
 			}
 			$scope.data = e.data;
 			console.log($scope.data)
-		}, function() { /*$state.go('404')*/ })
-		$scope.kl2 = function() {
-			if($scope.data.length / 6 <= $scope.page+1) {
-				angular.element(".alertw").css('bottom', '0')
-				angular.element(".alertw").stop().animate({
-					"bottom": "18%",
-					"opacity": 1
-				}, 600, function() {
-			angular.element(".alertw").delay(1000).animate({
-						"opacity": 0
-					});
-				})
-				$scope.shj = '已是最后一页';
-				$scope.page = $scope.page
-			} else {
-				$scope.page++
-			}
-		}
+		}, function() { /*$state.go('404')*/ });
 		$scope.zp = function() {
 				$state.go('home.news')
 		}
+		
 		$scope.$watch('data', function() {
-			$scope.arr = []
-  for(var i = 0; i < $scope.data.length / 6; i++) {
+			if($scope.data!=undefined){
+			$scope.arr = [];
+  			for(var i = 0; i < $scope.data.length / 6; i++) {
 				$scope.arr.push(i)
 			}
 			if($scope.page !== 0) {
 				$scope.page = Math.ceil($scope.arr.length / 6)
+			}
 			}
 		},true)
 		$scope.pages = function(e) {
@@ -127,6 +113,24 @@ angular.module('surveyTimeApp')
 				$scope.page = 0
 			}
 		}
+		$scope.kl2 = function() {
+			alert();
+			if($scope.data.length / 6 <= $scope.page+1) {
+				angular.element(".alertw").css('bottom', '0')
+				angular.element(".alertw").stop().animate({
+					"bottom": "18%",
+					"opacity": 1
+				}, 600, function() {
+			angular.element(".alertw").delay(1000).animate({
+						"opacity": 0
+					});
+				})
+				$scope.shj = '已是最后一页';
+				$scope.page = $scope.page
+			} else {
+				$scope.page++
+			}
+		}
 		$scope.xq = function(n) {
 			console.log(n)
 			$state.go('home.results', {
@@ -146,9 +150,12 @@ angular.module('surveyTimeApp')
 		}
 	}).filter("f", function() {
 	return function(input, page, siez) {
+		if(input!=''||input!=null){
 		var start = page * siez
 		var end = (page + 1) * siez
-		return input.slice(start, end)
+		return input.slice(start, end)	
+		}
+		
 	}
 }).directive('shujw', function() { //自定义指令
 		return {
