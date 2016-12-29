@@ -10,25 +10,12 @@
     </div>
     <div class="zhong">
         <h4 class="h4">{{dataj.title}}</h4> 
-
-        <!-- <div class="zonglan"> -->
-          <!--  <div class="box">
-           <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" 
-        chart-series="series" chart-click="onClick" chart-colors="blue"></canvas> 
-            </div>
-            <div class="box">
-            <canvas class="chart chart-pie" chart-data="data2" chart-labels="labels2" 
-        chart-series="series2" chart-click="onClick"></canvas> 
-            </div> -->
-        <!-- </div> -->
-        <!-- <div>{{finalData}}</div> -->
         <div>
             <test ng-repeat="x in finalData | dan" type="0" data="x" index="$index"></test>
             <test ng-repeat="x in finalData | duo" type="1" data="x" index="$index"></test>
             <test ng-repeat="x in finalData | tian" type="2" data="x" index="$index"></test>
             <test ng-repeat="x in finalData | jian" type="3" data="x" index="$index"></test>
         </div>
-        <!-- <div ng-repeat="x in dataj.option">{{x.type}}</div> -->
     </div>
 
     

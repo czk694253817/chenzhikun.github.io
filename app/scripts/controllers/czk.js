@@ -28,7 +28,6 @@ $scope.$on("oopOne",function(event,data){
       $scope.dataj = e.data;
       $scope.finalData = $scope.changeData($scope.dataj.option);
       // console.log( $scope.dataj);
-
    }); 
    $scope.changeData = function(Arr){
     var newData = [];
