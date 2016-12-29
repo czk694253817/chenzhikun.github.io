@@ -413,3 +413,10 @@ html,body{
 	           	left:5%;
 	           	opacity:0;
 	        }
+	        .lj-a3{
+	        	width:90%;
+	        	margin:0 auto;
+	        	height:3rem !important;
+	           	opacity:1 !important;
+	           	
+	        }
