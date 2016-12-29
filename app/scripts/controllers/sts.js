@@ -23,6 +23,9 @@ angular.module('surveyTimeApp')
 		$scope.sts_sqq=true;
 		$scope.sts_sqqq=true;
 		$rootScope.opend=[];
+		// $rootScope.aa=$stateParams.id;
+		// console.log(,"")
+
 		$scope.sts_fo=function(){
 			i = $rootScope.navindex;
 			$scope.num = 2;
