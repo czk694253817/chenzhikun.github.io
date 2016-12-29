@@ -48,6 +48,22 @@ angular.module('surveyTimeApp')
 		$scope.zp = function() {
 				$state.go('home.news')
 		}
+		$scope.$watch('data', function() {
+			if($scope.data!=undefined){
+			$scope.arr = [];
+  			for(var i = 0; i < $scope.data.length / 6; i++) {
+				$scope.arr.push(i)
+			}
+			if($scope.shu != 0) {
+				$scope.shu = Math.ceil($scope.data.length / 6) - 1;
+			}
+			}
+//			if($scope.data.length%6==0&&$scope.shu!=0){
+//				console.log($scope.data.length)
+//				$scope.shu--
+//				console.log($scope.shu)
+//	    	}
+		},true)
 			//删除
 		$scope.sc = function(e, hj) {
 			$http({
@@ -66,27 +82,15 @@ angular.module('surveyTimeApp')
 				})
 				$scope.shj = '删除成功';
 		$scope.data.splice($scope.data.indexOf(e), 1);
-		if($scope.data.length%6==0&&$scope.page!=0){
 		console.log($scope.shu)
-		$scope.shu--
-		console.log($scope.shu)
-	}
+		console.log($scope.data.length)
+	
 				}
 			}, function() {
 				console.log(hj);
 			})
 		}
-		$scope.$watch('data', function() {
-			if($scope.data!=undefined){
-			$scope.arr = [];
-  			for(var i = 0; i < $scope.data.length / 6; i++) {
-				$scope.arr.push(i)
-			}
-			if($scope.shu !== 0) {
-				$scope.shu = Math.ceil($scope.arr.length / 6)
-			}
-			}
-		},true)
+		
 		$scope.kk = function(hh) {
 			$scope.ll = true;
 			angular.element(".z-kj").slideToggle(500)
@@ -135,10 +139,16 @@ angular.module('surveyTimeApp')
 				producerId: '=' + n
 			});
 		}
+				$scope.yl = function(n) {
+			console.log(n)
+			$state.go('questionaire', {
+				producerId: '=' + n
+			});
+		}
 	}]).directive('shuju', function() { //自定义指令
 		return {
 			restrict: 'EACM', //仅限元素名调用
-			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p"><img src="images/z-yx.png"/><span>预览</span></div><div class="zk-p" ng-click="xq(x.id)"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
+			template: '<div><div class="z-ju" ><li class="list-group-item"  ng-click="xw()">{{x.title}}</li><span class="badgew" ng-click="xw()">0</span></div><div class="z-d" style="display:none;"><div class="zk-p" ng-click="kk(x.id)"><img src="images/z-zl.png"/><span>分享</span></div><div class="zk-p" ng-click="yl(x.id)"><img src="images/z-yx.png"/><span>预览</span></div><div class="zk-p" ng-click="xq(x.id)"><img src="images/z-sds.png"/><span>结果</span></div><div class="zk-p" ng-click="sc(x,$index)"><img src="images/z-dd.png"/><span>删除</span></div></div></div>',
 			link: function(scope, ele, attr) {
 				scope.xw = function() {
 					ele.find(".z-d").slideToggle(200);

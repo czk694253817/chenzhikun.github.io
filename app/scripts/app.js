@@ -72,7 +72,7 @@
       templateUrl:'views/ststotk.html',
       controller:"ststotk"
     }).state("questionaire",{
-      url:"/questionaire",
+      url:"/questionaire:producerId",
       templateUrl:"views/questionaire.html",
       controller:"zjfCon"
     }).state("reset",{

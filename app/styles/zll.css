@@ -110,7 +110,8 @@ margin-top: 1.4rem;
 		.pager{
 			float: left;
 			margin-top: 2rem;
-			margin-left: 8.5rem;
+			    margin: 79px 0;
+			    margin-left: 7.5rem;
 		}
 		.zk-p img{
 			width:2.4rem;
