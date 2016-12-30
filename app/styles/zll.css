@@ -49,7 +49,7 @@ margin-top: 15px;
 	width:1.6rem;
 	height:2rem;
 	border-radius: 10%;
-	color: black;
+	color: #fff;
 	line-height: 2rem;
 	float:right;
 	margin-top: -2.7rem;
@@ -159,10 +159,10 @@ margin-top: 1.4rem;
 
 .lk{
 				width:60px;
-				height: 60px;
+				height: 68px;
 				display: block;
 				float: left;
-				margin-left: 29px !important;
+				margin-left: 36px !important;
 			}
 			.lk span{
 				text-align: center;
@@ -176,6 +176,8 @@ margin-top: 1.4rem;
 				height:208px !important;
 			}
 			.sz-p{
+				display: block;
+				margin-top: 10px;
 			color: goldenrod;
 			margin-left: 10px;
 			}
