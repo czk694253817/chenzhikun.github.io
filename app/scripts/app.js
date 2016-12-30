@@ -12,7 +12,7 @@
  angular.module('surveyTimeApp', ["ui.router","chart.js","ngCookies","summernote"]) 
  .constant("url","http://47.90.20.200:1602/") 
  .config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){ 
- $urlRouterProvider.when("","/home/lists")
+ $urlRouterProvider.when("","/login")
   $stateProvider.state("home",{ 
     url:"/home", 
        templateUrl:'views/home.html', 
