@@ -18,7 +18,7 @@ angular.module('surveyTimeApp')
     var ele2=angular.element(".lj-search_pass_link1")
     var ele3=angular.element(".lj-jizhu1")
     if($cookies.get("myuser")){
-      $state.go("home");
+      $state.go("home.lists");
       $scope.lijiang=true;
       ele2.attr("index","true")
     }
