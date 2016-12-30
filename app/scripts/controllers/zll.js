@@ -45,10 +45,7 @@ angular.module('surveyTimeApp')
 			console.log($scope.data)
 		}, function() { /*$state.go('404')*/ })
 		
-		$scope.zp = function() {
-				$state.go('home.news')
-		}
-		$scope.$watch('data', function() {
+/*		$scope.$watch('data', function() {
 			if($scope.data!=undefined){
 			$scope.arr = [];
   			for(var i = 0; i < $scope.data.length / 6; i++) {
@@ -63,7 +60,7 @@ angular.module('surveyTimeApp')
 //				$scope.shu--
 //				console.log($scope.shu)
 //	    	}
-		},true)
+		},true)*/
 			//删除
 		$scope.sc = function(e, hj) {
 			$http({
@@ -82,8 +79,6 @@ angular.module('surveyTimeApp')
 				})
 				$scope.shj = '删除成功';
 		$scope.data.splice($scope.data.indexOf(e), 1);
-		console.log($scope.shu)
-		console.log($scope.data.length)
 	
 				}
 			}, function() {
@@ -91,13 +86,12 @@ angular.module('surveyTimeApp')
 			})
 		}
 		$scope.fn = function() {
-			alert($scope.shu)
 			if($scope.shu > 0) {
 				$scope.shu--
 			} else {
-				angular.element(".alertw").css('bottom', '0')
+				angular.element(".alertw").css('bottom', '0%')
 				angular.element(".alertw").stop().animate({
-					"bottom": "18%",
+					"bottom": "28%",
 					"opacity": 1
 				}, 600, function() {
 		angular.element(".alertw").delay(1000).animate({
@@ -109,11 +103,10 @@ angular.module('surveyTimeApp')
 			}
 		}
 		$scope.fn2 = function() {
-			alert($scope.shu)
-			if($scope.data.length / 6 <= $scope.shu + 1) {
-				angular.element(".alertw").css('bottom', '0')
+			if($scope.data.length / 6 <= $scope.shu+1) {
+				angular.element(".alertw").css('bottom', '0%')
 				angular.element(".alertw").stop().animate({
-					"bottom": "18%",
+					"bottom": "28%",
 					"opacity": 1
 				}, 600, function() {
 			angular.element(".alertw").delay(1000).animate({
@@ -126,7 +119,7 @@ angular.module('surveyTimeApp')
 				$scope.shu++
 			}
 		}
-		$scope.kk = function(hh) {
+/*		$scope.kk = function(hh) {
 			$scope.ll = true;
 			angular.element(".z-kj").slideToggle(500)
 		}
@@ -146,7 +139,7 @@ angular.module('surveyTimeApp')
 			$state.go('questionaire', {
 				producerId: '=' + n
 			});
-		}
+		}*/
 	}]).directive('shuju', function() { //自定义指令
 		return {
 			restrict: 'EACM', //仅限元素名调用
