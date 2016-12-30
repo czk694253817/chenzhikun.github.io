@@ -14,8 +14,8 @@ angular.module('surveyTimeApp')
 		// $rootScope.num = 1;
 		$scope.$emit("toparent",1);
 		$rootScope.navindex = 1;
+		$scope.kw=localStorage.uid
 		$scope.id = $stateParams.id;
-		console.log($stateParams.id);
 		$scope.ll = false;
 		$scope.zhu = false;
 		$scope.shj = '已是第一页';
@@ -24,7 +24,7 @@ angular.module('surveyTimeApp')
 			method: 'get',
 			url: url + 'item/',
 			params: {
-				uid: $scope.id
+				uid: $scope.kw
 			}
 		}).then(function(e) {
 			if(e.data == '' || e.data == 'null' || e.data.length == 0) {
@@ -90,16 +90,8 @@ angular.module('surveyTimeApp')
 				console.log(hj);
 			})
 		}
-		
-		$scope.kk = function(hh) {
-			$scope.ll = true;
-			angular.element(".z-kj").slideToggle(500)
-		}
-		$scope.xis = function(hh) {
-			$scope.ll = false;
-			angular.element(".z-kj").slideToggle(500)
-		}
 		$scope.fn = function() {
+			alert($scope.shu)
 			if($scope.shu > 0) {
 				$scope.shu--
 			} else {
@@ -117,6 +109,7 @@ angular.module('surveyTimeApp')
 			}
 		}
 		$scope.fn2 = function() {
+			alert($scope.shu)
 			if($scope.data.length / 6 <= $scope.shu + 1) {
 				angular.element(".alertw").css('bottom', '0')
 				angular.element(".alertw").stop().animate({
@@ -133,6 +126,15 @@ angular.module('surveyTimeApp')
 				$scope.shu++
 			}
 		}
+		$scope.kk = function(hh) {
+			$scope.ll = true;
+			angular.element(".z-kj").slideToggle(500)
+		}
+		$scope.xis = function(hh) {
+			$scope.ll = false;
+			angular.element(".z-kj").slideToggle(500)
+		}
+		
 		$scope.xq = function(n) {
 			console.log(n)
 			$state.go('home.results', {
