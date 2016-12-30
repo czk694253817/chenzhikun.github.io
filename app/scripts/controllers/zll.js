@@ -45,7 +45,7 @@ angular.module('surveyTimeApp')
 			console.log($scope.data)
 		}, function() { /*$state.go('404')*/ })
 		
-/*		$scope.$watch('data', function() {
+		$scope.$watch('data', function() {
 			if($scope.data!=undefined){
 			$scope.arr = [];
   			for(var i = 0; i < $scope.data.length / 6; i++) {
@@ -60,7 +60,7 @@ angular.module('surveyTimeApp')
 //				$scope.shu--
 //				console.log($scope.shu)
 //	    	}
-		},true)*/
+		},true)
 			//删除
 		$scope.sc = function(e, hj) {
 			$http({
@@ -119,7 +119,7 @@ angular.module('surveyTimeApp')
 				$scope.shu++
 			}
 		}
-/*		$scope.kk = function(hh) {
+		$scope.kk = function(hh) {
 			$scope.ll = true;
 			angular.element(".z-kj").slideToggle(500)
 		}
@@ -139,7 +139,7 @@ angular.module('surveyTimeApp')
 			$state.go('questionaire', {
 				producerId: '=' + n
 			});
-		}*/
+		}
 	}]).directive('shuju', function() { //自定义指令
 		return {
 			restrict: 'EACM', //仅限元素名调用
