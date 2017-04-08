@@ -78,5 +78,8 @@
       url:"/reset/:id",
       templateUrl:"views/reset.html",
       controller:"resetCon"
+    }).state("403",{
+      url:"/403",
+      templateUrl:"views/403.html",
     })
  }]); 

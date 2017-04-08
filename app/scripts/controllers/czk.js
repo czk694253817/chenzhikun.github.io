@@ -8,7 +8,11 @@
  * Controller of the surveyTimeApp
  */
 angular.module('surveyTimeApp')
-.controller("czkCon", ['$scope', '$timeout','$rootScope','service','url','$location','$http',function ($scope,$rootScope, $timeout ,service,url,$location,$http) { 
+.controller("czkCon", ['$scope', '$timeout','$rootScope','service','url','$location','$http','$state',function ($scope,$rootScope, $timeout ,service,url,$location,$http,$state) { 
+
+  if(navigator.onLine){
+
+
 
 $scope.guanbi=function(){
   $scope.html=null;
@@ -21,9 +25,8 @@ $scope.$on("oopOne",function(event,data){
 
 })
   var idurl=$location.absUrl();
-  var idurl2=new Array();
+  // var idurl2=new Array();
   var idurl3=idurl.split("=");
-
   service.get(url+"item/"+idurl3[1],function(e){
       $scope.dataj = e.data;
       $scope.finalData = $scope.changeData($scope.dataj.option);
@@ -47,7 +50,10 @@ $scope.$on("oopOne",function(event,data){
       }
     }
     return newData;
-  }; 
+  };
+  }else{
+    $state.go("403")
+  } 
 }]).directive("test",[function(){
     return {
       restrict:"ECMA",
